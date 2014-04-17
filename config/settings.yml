@@ -1,0 +1,7 @@
+uncategorized:
+  sidebar_widgets:
+    default: stats|medium|facebook_page
+    client: true
+  sidebar_fb_page:
+    default: ""
+    client: true

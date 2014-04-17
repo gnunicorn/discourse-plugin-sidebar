@@ -1,0 +1,16 @@
+
+.side-bar section.main-outlet-wrap {
+    width: 73%;
+    display: inline-block;
+    float: left;
+}
+
+.side-bar aside.sidebar {
+    display: inline-block;
+    width: 25%;
+    margin-left: 1%;
+}
+
+.no-sidebar aside.sidebar {
+    display: none;
+}

@@ -1,0 +1,36 @@
+var patcher = Ember.TemplatePatcher;
+
+patcher.setDebug(true);
+patcher.setFinder('<div class="full-width">');
+
+var patched = '<div class="side-bar"><section class="main-outlet-wrap">{{outlet}}</section><aside class="sidebar">{{view Discourse.SidebarView}}</aside></div>'
+
+// wrap outlet into our section, attach aside
+patcher.addGeneralPatcher("d548bf6fdda930a8c85df0b374a0f425", function(ast, hash, str){
+    patcher.replaceWith(ast, 3, patched);
+});
+
+
+function un_full_width(ast, hash, str){
+    return Handlebars.parse(str.replace("full-width", ""));
+};
+
+patcher.addGeneralPatcher("e2c98d5525a295d87656569cc62d41c6", un_full_width);
+patcher.addGeneralPatcher("f22c385e76a8279efe4b6223522346e3", un_full_width)
+
+
+// we also need to create this view early so other plugins can attach
+// to it.
+
+Discourse.SidebarView = Discourse.ContainerView.extend({
+    init: function(){
+        this._super();
+        var widgets = Discourse.SiteSettings.sidebar_widgets.split("|") || ["stats"];
+
+        widgets.forEach(function(item, idx){
+            var view = this.get(item);
+            if (!view) return;
+            this.pushObject(view);
+        }.bind(this));
+    }
+});
