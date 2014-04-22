@@ -6,7 +6,7 @@ patcher.setFinder('<div class="full-width">');
 var patched = '<div class="side-bar"><section class="main-outlet-wrap">{{outlet}}</section><aside class="sidebar">{{view Discourse.SidebarView}}</aside></div>'
 
 // wrap outlet into our section, attach aside
-patcher.addGeneralPatcher("d548bf6fdda930a8c85df0b374a0f425", function(ast, hash, str){
+patcher.addGeneralPatcher("402687e3b577ae3aadf82473dd6e4323", function(ast, hash, str){
     patcher.replaceWith(ast, 3, patched);
 });
 
