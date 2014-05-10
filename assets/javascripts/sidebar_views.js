@@ -31,7 +31,7 @@
         tagName: "div",
         classNameBindings: ["shouldBeHidden:hidden"],
         categories: [],
-        init: function(){
+        initialize: function(){
             this._super();
             Discourse.CategoryList.list('categories'
                 ).then(function(resp){
