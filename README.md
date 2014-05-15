@@ -2,14 +2,24 @@
 
 EXPERIMENTAL!!!!!!!
 
-**Attention**: this plugin requires the highly experimental [handlbars-injector branch](https://github.com/ligthyear/discourse/tree/handlebars-injector) to work. It will most likely not break your installation but it won't work either.
+**Attention**: this plugin only works if you applied the [handlebars_injector patches](https://github.com/ligthyear/discourse_patches/tree/master/handlebars_injector)
 
 ---
 
 This plugin wraps the main content and adds a configurable sidebar to the right. On-top, it allows other plugins to add other widgets to the sidebar.
 
+## Patching
+
+For this plugin to work, you need to patch discourse. For that check out lightyears patches directory and apply the handlebars_injector patches. From your mainline discourse checkout do:
+
+    cd plugins
+    git clone https://github.com/ligthyear/discourse_patches.git
+    cd ..
+    git apply plugins/patches/handlebars_injector/*.patch
 
 ## Installation
+
+**Attention**: only works after the handlebar_injector patches have been applied successfully.
 
 Just three simple steps. From your main discourse do:
 
@@ -33,6 +43,10 @@ They work as follows:
 
 
 ## Changelog:
+
+ * 2012-05-15:
+   - Update Readme
+   - Add docs for Plugin-Plugin-Developers
 
  * 2014-04-22:
    - add Readme
