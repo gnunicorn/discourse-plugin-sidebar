@@ -31,10 +31,10 @@ These Childviews are autonomous from that point on and can do everything a norma
 
 The SidebarView has one more feature: it observes the router and informs all widgets about changes of the url. This is purely done using setProperty and event triggers and doesn't require any further methods on the widget. The following properties will be changed per url:
 
-    - _url_: The url the router is going to
-    - _currentController_ : The new controller that is "in charge" of handling this URL if found (actual instance)
-    - _handlerInfos_: any further information send to the route (like parameters)
-    - _currentControllerName_: handy-mapper of currentController.name,
+ - `url`: The url the router is going to
+ - `currentController`: The new controller that is "in charge" of handling this URL if found (actual instance)
+ - `handlerInfos`: any further information send to the route (like parameters)
+ - `currentControllerName`: handy-mapper of currentController.name,
 
 After every update the event `urlChanged` will be triggered, allowing the view to rerender on every url change by connecting to this event.
 
