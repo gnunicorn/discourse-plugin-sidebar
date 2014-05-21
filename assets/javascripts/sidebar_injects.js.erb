@@ -13,11 +13,11 @@
             patcher.replaceWith(ast, 3, patched);
         });
 
-    patcher.addGeneralPatcher(["e2c98d5525a295d87656569cc62d41c6",
-                               "f22c385e76a8279efe4b6223522346e3"],
-        function (ast, hash, str){
-            return Handlebars.parse(str.replace("full-width", ""));
-        });
+   // patcher.addGeneralPatcher(["e2c98d5525a295d87656569cc62d41c6",
+   //                            "f22c385e76a8279efe4b6223522346e3"],
+   //     function (ast, hash, str){
+   //         return Handlebars.parse(str.replace("full-width", ""));
+   //     });
 
     // we also need to create this view early so other plugins can attach
     // to it.
