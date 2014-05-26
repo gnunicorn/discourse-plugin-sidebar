@@ -25,38 +25,56 @@
         }.property("handlerInfos")
     });
 
-
-    var SubcategoriesView = Ember.View.extend({
-        templateName: "sidebar_subcategories",
-        tagName: "div",
+    var CategoryViewMixing = Ember.Mixin.create({
         classNameBindings: ["shouldBeHidden:hidden"],
-        categories: [],
-        initialize: function(){
-            this._super();
+        didInsertElement: function(){
             Discourse.CategoryList.list('categories'
                 ).then(function(resp){
                     this.set("categories", resp.categories);
                 }.bind(this));
         },
 
+        shouldBeHidden: function(){
+            // we only show up on category pages
+            return this.get("currentControllerName").indexOf("category") === -1;
+        }.property("currentControllerName")
+
+    });
+
+    var SubcategoriesView = Ember.View.extend(CategoryViewMixing, {
+        templateName: "sidebar_subcategories",
+        tagName: "div",
+
         subcategories: function() {
-            var category_id = this.get("currentController").context.id;
-            var categories = this.get("categories");
+            var category_id = this.get("currentController").context.id,
+                categories = this.get("categories");
             if (!category_id || !categories) return;
             var category = categories.findBy('id', category_id);
             return category ? category.subcategories : []
         }.property("handlerInfos", "categories"),
 
-        shouldBeHidden: function(){
-            // we only show up on category pages
-            return this.get("currentControllerName").indexOf("category") === -1;
-        }.property("currentControllerName")
+    });
+
+    var CategoryFeaturedUsers = Ember.View.extend(CategoryViewMixing, {
+        templateName: "sidebar_featured_users",
+        tagName: "div",
+
+        featured_users: function() {
+            var category_id = this.get("currentController").context.id,
+                categories = this.get("categories");
+            if (!category_id || !categories) return;
+            var category = categories.findBy('id', category_id);
+            console.log(category);
+            return category ? category.featured_users : []
+        }.property("handlerInfos", "categories"),
+
     });
 
 
     Discourse.SidebarView.reopen({
         facebook_page: FacebookPageView.create(),
         subcategories: SubcategoriesView.create(),
+        category_featured_users: CategoryFeaturedUsers.create(),
         topic_stats: TopicStatsPageView.create()
     });
 

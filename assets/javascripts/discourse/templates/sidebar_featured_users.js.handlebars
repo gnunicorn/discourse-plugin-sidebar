@@ -1,0 +1,9 @@
+{{#if view.featured_users }}
+    <h3>Featured Users</h3>
+
+  <div class='featured-users'>
+    {{#each view.featured_users}}
+      <a href="/users/{{unbound username_lower}}">{{avatar this imageSize="small"}}</a>
+    {{/each}}
+  </div>
+{{/if}}
