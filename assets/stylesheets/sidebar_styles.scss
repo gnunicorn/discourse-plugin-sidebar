@@ -14,3 +14,53 @@
 .no-sidebar aside.sidebar {
     display: none;
 }
+
+// unfortunately that means we don't have space for the gutter, hide it
+.topic-post .gutter {
+  display: none;
+}
+
+// but we make the other things bigger: yay \o/
+.container.posts {
+  padding-left: 3%;
+}
+
+.container.posts .topic-body {
+  width: 90%;
+}
+
+#topic-title {
+  padding-left: 20px;
+}
+
+// user profiles
+.user-main {
+  max-width: 68%;
+}
+.user-navigation {
+  max-width: 29%;
+}
+
+// fix hard-coded overflow issues
+
+
+@media screen and (min-width: 1550px) {
+    .full-width {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 967px) and (max-width: 1139px) {
+  .container,
+  .full-width {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 966px) {
+
+  .container,
+  .full-width {
+    width: 100%;
+  }
+}
