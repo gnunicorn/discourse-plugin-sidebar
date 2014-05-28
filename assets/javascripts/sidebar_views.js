@@ -7,6 +7,24 @@
         }.property()
     });
 
+    var SignupController = Ember.Controller.extend({
+        actions: {
+            showLogin: function(){
+              Discourse.Route.showModal(this, 'login');
+              this.controllerFor('login').resetForm();
+          }
+        }
+    });
+
+    var SignupView = Ember.View.extend({
+        templateName: "sidebar_signup",
+        tagName: "div",
+        classNameBindings: ["shouldBeHidden:hidden"],
+        shouldBeHidden: function(){
+            return Discourse.User.current() != null;
+        }.property()
+    });
+
     var TopicStatsPageView = Ember.View.extend({
         templateName: "sidebar_topic_stats",
         tagName: "div",
@@ -75,6 +93,7 @@
     Discourse.SidebarView.reopen({
         facebook_page: FacebookPageView.create(),
         subcategories: SubcategoriesView.create(),
+        signup: SignupView.create(),
         category_featured_users: CategoryFeaturedUsers.create(),
         topic_stats: TopicStatsPageView.create()
     });
