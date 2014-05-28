@@ -34,6 +34,14 @@
                 }.bind(this));
         },
 
+        category: function() {
+            var category_id = this.get("currentController").context.id,
+                categories = this.get("categories");
+            if (!category_id || !categories) return;
+            var category = categories.findBy('id', category_id);
+            return category;
+        }.property("handlerInfos", "categories"),
+
         shouldBeHidden: function(){
             // we only show up on category pages
             return this.get("currentControllerName").indexOf("category") === -1;
@@ -46,12 +54,9 @@
         tagName: "div",
 
         subcategories: function() {
-            var category_id = this.get("currentController").context.id,
-                categories = this.get("categories");
-            if (!category_id || !categories) return;
-            var category = categories.findBy('id', category_id);
+            var category = this.get("category");
             return category ? category.subcategories : []
-        }.property("handlerInfos", "categories"),
+        }.property("category"),
 
     });
 
@@ -60,13 +65,9 @@
         tagName: "div",
 
         featured_users: function() {
-            var category_id = this.get("currentController").context.id,
-                categories = this.get("categories");
-            if (!category_id || !categories) return;
-            var category = categories.findBy('id', category_id);
-            console.log(category);
-            return category ? category.featured_users : []
-        }.property("handlerInfos", "categories"),
+            var category = this.get("category");
+            return category ? category.featured_users : [];
+        }.property("category"),
 
     });
 
