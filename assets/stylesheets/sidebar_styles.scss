@@ -9,6 +9,11 @@
     width: 25%;
     margin-left: 1%;
     float: right;
+    .suggested-topics {
+      .num {
+        display: none;
+      }
+    }
 }
 
 .no-sidebar aside.sidebar {

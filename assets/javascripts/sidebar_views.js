@@ -25,6 +25,21 @@
         }.property()
     });
 
+    var SuggestedTopicsWidget = Ember.View.extend({
+        templateName: "sidebar_suggested_topics",
+        tagName: "div",
+        classNameBindings: ["shouldBeHidden:hidden", "sidebar-suggested"],
+        shouldBeHidden: function(){
+            return !this.get("suggestedTopics");
+        }.property("suggestedTopics"),
+
+        suggestedTopics: function() {
+            var handler = this.get("handlerInfos").find(function(x){ return x.name === "topic"})
+            if (!handler) return;
+            return handler.context.get("details.suggested_topics");
+        }.property("handlerInfos")
+    });
+
     var TopicStatsPageView = Ember.View.extend({
         templateName: "sidebar_topic_stats",
         tagName: "div",
@@ -94,6 +109,7 @@
         facebook_page: FacebookPageView.create(),
         subcategories: SubcategoriesView.create(),
         signup: SignupView.create(),
+        suggested_topics: SuggestedTopicsWidget.create(),
         category_featured_users: CategoryFeaturedUsers.create(),
         topic_stats: TopicStatsPageView.create()
     });

@@ -11,6 +11,7 @@ register_asset "javascripts/discourse/templates/sidebar_signup.js.handlebars"
 register_asset "javascripts/discourse/templates/sidebar_topic_stats.js.handlebars"
 register_asset "javascripts/discourse/templates/sidebar_subcategories.js.handlebars"
 register_asset "javascripts/discourse/templates/sidebar_featured_users.js.handlebars"
+register_asset "javascripts/discourse/templates/sidebar_suggested_topics.js.handlebars"
 register_asset "javascripts/sidebar_views.js"
 register_asset "javascripts/reply-new-menu.js"
 
