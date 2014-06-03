@@ -9,6 +9,7 @@ register_asset 'javascripts/sidebar_injects.js.erb', :template_injector
 register_asset "javascripts/discourse/templates/sidebar_fb_page.js.handlebars"
 register_asset "javascripts/discourse/templates/sidebar_signup.js.handlebars"
 register_asset "javascripts/discourse/templates/sidebar_topic_stats.js.handlebars"
+register_asset "javascripts/discourse/templates/sidebar_user_stats.js.handlebars"
 register_asset "javascripts/discourse/templates/sidebar_subcategories.js.handlebars"
 register_asset "javascripts/discourse/templates/sidebar_featured_users.js.handlebars"
 register_asset "javascripts/discourse/templates/sidebar_suggested_topics.js.handlebars"

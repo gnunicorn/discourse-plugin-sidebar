@@ -1,0 +1,58 @@
+<hr>
+<h2>My Stats</h2>
+<dl>
+  {{#if view.badges}}
+      <dt>Badges</dt>
+      <dd>{{#each view.badges}}{{name}} {{/each}}</dd>
+  {{/if}}
+  {{#if view.likes_received }}
+      <dt>Likes received</dt>
+      <dd>{{view.likes_received}}</dd>
+  {{/if}}
+
+  {{#if view.likes_given }}
+      <dt>Likes given</dt>
+      <dd>{{view.likes_given}}</dd>
+  {{/if}}
+
+  {{#if view.topics }}
+      <dt>Topics</dt>
+      <dd>{{view.topics}}</dd>
+  {{/if}}
+
+  {{#if view.posts }}
+      <dt>Posts</dt>
+      <dd>{{view.posts}}</dd>
+  {{/if}}
+
+  {{#if view.replies }}
+      <dt>Replies</dt>
+      <dd>{{view.replies}}</dd>
+  {{/if}}
+  {{#if view.edits }}
+      <dt>Edits</dt>
+      <dd>{{view.edits}}</dd>
+  {{/if}}
+
+  {{#if view.quotes }}
+      <dt>Quotes</dt>
+      <dd>{{view.quotes}}</dd>
+  {{/if}}
+
+  {{#if view.mentions }}
+      <dt>Mentions</dt>
+      <dd>{{view.mentions}}</dd>
+  {{/if}}
+
+  {{#if view.bookmarks }}
+      <dt>Bookmarks</dt>
+      <dd>{{view.bookmarks}}</dd>
+  {{/if}}
+
+  {{#if view.starred }}
+      <dt>Starred</dt>
+      <dd>{{view.starred}}</dd>
+  {{/if}}
+
+  {{view.category.topic.excerpt}}
+</dl>

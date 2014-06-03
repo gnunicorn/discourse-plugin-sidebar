@@ -104,6 +104,33 @@
 
     });
 
+    var UserStatsView = Ember.View.extend({
+        templateName: "sidebar_user_stats",
+        tagName: "div",
+        classNameBindings: ["shouldBeHidden:hidden"],
+        didInsertElement: function(){
+            this.set("user", Discourse.User.current());
+            if (this.get("user")){
+                Discourse.ajax("/users/" + this.get("user").username + ".json"
+                    ).then(function(resp){
+                        this.set("badges", resp.badges);
+                        this.set("user", resp.user);
+                        for (key in Discourse.UserAction.TYPES){
+                            this.set(key, this.get_stat(Discourse.UserAction.TYPES[key]))
+                        }
+                    }.bind(this)).catch(function(resp){
+                        console.error(resp);
+                    });
+            }
+        },
+        shouldBeHidden: function(){
+            return !this.get("user");
+        }.property("user"),
+        get_stat: function(id){
+            return ((this.get("user.stats") || []).findBy("action_type", id) || {}).count
+        }
+    });
+
     var CategoryInfoView = Ember.View.extend(CategoryViewMixing, {
         templateName: "sidebar_category_info",
         tagName: "div",
@@ -118,6 +145,7 @@
         facebook_page: FacebookPageView.create(),
         subcategories: SubcategoriesView.create(),
         signup: SignupView.create(),
+        user_stats: UserStatsView.create(),
         suggested_topics: SuggestedTopicsWidget.create(),
         category_featured_users: CategoryFeaturedUsers.create(),
         category_info: CategoryInfoView.create(),
