@@ -104,6 +104,15 @@
 
     });
 
+    var CategoryInfoView = Ember.View.extend(CategoryViewMixing, {
+        templateName: "sidebar_category_info",
+        tagName: "div",
+        classNameBindings: ["shouldBeHidden:hidden"],
+        shouldBeHidden: function(){
+            return !this.get("category.topic.excerpt")
+        }.property("category")
+    });
+
 
     Discourse.SidebarView.reopen({
         facebook_page: FacebookPageView.create(),
@@ -111,6 +120,7 @@
         signup: SignupView.create(),
         suggested_topics: SuggestedTopicsWidget.create(),
         category_featured_users: CategoryFeaturedUsers.create(),
+        category_info: CategoryInfoView.create(),
         topic_stats: TopicStatsPageView.create()
     });
 
