@@ -1,0 +1,4 @@
+en:
+  site_settings:
+    sidebar_widgets: sidebar widgets to be loaded
+    sidebar_fb_page: Facebook Page ID for sidebar widget
