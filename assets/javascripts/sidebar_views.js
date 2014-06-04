@@ -68,7 +68,7 @@
         },
 
         category: function() {
-            var category_id = this.get("currentController").context.id,
+            var category_id = this.get("currentController.context.id"),
                 categories = this.get("categories");
             if (!category_id || !categories) return;
             var category = categories.findBy('id', category_id);
