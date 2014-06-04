@@ -1,0 +1,6 @@
+<h3>Notifications</h3>
+<ul>
+    {{#each view.notifications itemController="notification"}}
+        <li {{bind-attr class="read"}}>{{notification-item model=this scope=scope}}</li>
+    {{/each}}
+</ul>

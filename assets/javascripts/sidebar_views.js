@@ -131,6 +131,21 @@
         }
     });
 
+    var UserNotificationsView = Ember.View.extend({
+        templateName: "sidebar_user_notifications",
+        tagName: "div",
+        classNameBindings: ["shouldBeHidden:hidden"],
+        didInsertElement: function(){
+            Discourse.ajax("/notifications").then(function(result) {
+                console.log(result);
+                this.set("notifications", result);
+            }.bind(this));
+        },
+        shouldBeHidden: function(){
+            return Discourse.User.current() === null;
+        }.property()
+    })
+
     var CategoryInfoView = Ember.View.extend(CategoryViewMixing, {
         templateName: "sidebar_category_info",
         tagName: "div",
@@ -146,6 +161,7 @@
         subcategories: SubcategoriesView.create(),
         signup: SignupView.create(),
         user_stats: UserStatsView.create(),
+        user_notifications: UserNotificationsView.create(),
         suggested_topics: SuggestedTopicsWidget.create(),
         category_featured_users: CategoryFeaturedUsers.create(),
         category_info: CategoryInfoView.create(),
