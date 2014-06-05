@@ -1,3 +1,5 @@
+//= require_tree ./discourse/templates
+
 (function(){
     var FacebookPageView = Ember.View.extend({
         templateName: "sidebar_fb_page",
