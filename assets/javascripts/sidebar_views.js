@@ -60,6 +60,23 @@
         }.property("handlerInfos")
     });
 
+
+    var UnansweredTopicsWidget = Ember.View.extend({
+        templateName: "sidebar_unanswered_topics",
+        tagName: "div",
+        classNameBindings: ["shouldBeHidden:hidden", "sidebar-unanswered"],
+        didInsertElement: function() {
+            Discourse.ajax("/latest.json?max_posts=1").then(function(resp){
+                this.set("unansweredTopics", resp.topic_list.topics);
+            }.bind(this)).catch(function(x){
+                console.error(x);
+            });
+        },
+        shouldBeHidden: function(){
+            return !this.get("unansweredTopics");
+        }.property("unansweredTopics")
+    });
+
     var CategoryViewMixing = Ember.Mixin.create({
         classNameBindings: ["shouldBeHidden:hidden"],
         didInsertElement: function(){
@@ -163,6 +180,7 @@
         subcategories: SubcategoriesView.create(),
         signup: SignupView.create(),
         user_stats: UserStatsView.create(),
+        unanswered_topics: UnansweredTopicsWidget.create(),
         user_notifications: UserNotificationsView.create(),
         suggested_topics: SuggestedTopicsWidget.create(),
         category_featured_users: CategoryFeaturedUsers.create(),
