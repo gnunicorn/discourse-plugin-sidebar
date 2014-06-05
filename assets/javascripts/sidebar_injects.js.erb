@@ -8,8 +8,8 @@
     var patched = '<div class="side-bar"><section class="main-outlet-wrap">{{outlet}}</section><aside class="sidebar">{{view Discourse.SidebarView}}</aside></div>'
 
     // wrap outlet into our section, attach aside
-    patcher.addGeneralPatcher("402687e3b577ae3aadf82473dd6e4323",
-        function(ast, hash, str){
+    patcher.addGeneralPatcher(["402687e3b577ae3aadf82473dd6e4323", "9d0caaa211aeb7d775aed0f6dd327c73"],
+        function add_sidebar(ast, hash, str){
             patcher.replaceWith(ast, 3, patched);
         });
 
