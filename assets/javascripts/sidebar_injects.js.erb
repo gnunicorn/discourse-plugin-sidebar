@@ -26,8 +26,8 @@
         init: function(){
             this._super();
             var widgets = Discourse.SiteSettings.sidebar_widgets.split("|") || ["stats"];
-
             widgets.forEach(function(item, idx){
+                if (!item) return;
                 var view = this.get(item);
                 if (!view) return;
                 this.pushObject(view);
