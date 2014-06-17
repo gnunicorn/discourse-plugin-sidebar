@@ -1,0 +1,11 @@
+{{render "header"}}
+
+<div id='main-outlet'>
+    <div class="side-bar">
+        <section class="main-outlet-wrap">{{outlet}}</section>
+        <aside class="sidebar">{{view Discourse.SidebarView}}</aside>
+    </div>
+</div>
+
+{{render "modal"}}
+{{render "composer"}}

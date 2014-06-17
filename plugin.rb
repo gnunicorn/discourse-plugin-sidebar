@@ -4,7 +4,7 @@
 # authors: Benjamin Kampmann
 
 
-register_asset 'javascripts/sidebar_injects.js.erb', :template_injector
+register_asset 'javascripts/sidebar_view.js'
 register_asset "javascripts/sidebar_views.js"
 register_asset "javascripts/reply-new-menu.js"
 
