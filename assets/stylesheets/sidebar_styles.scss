@@ -63,17 +63,21 @@
 
 // fix hard-coded overflow issues
 
+.full-width {
+  width: auto;
+}
+
 
 @media screen and (min-width: 1550px) {
     .full-width {
-        width: 100%;
+        width: auto;
     }
 }
 
 @media screen and (min-width: 967px) and (max-width: 1139px) {
   .container,
   .full-width {
-    width: 100%;
+    width: auto;
   }
 }
 
@@ -81,6 +85,6 @@
 
   .container,
   .full-width {
-    width: 100%;
+    width: auto;
   }
 }
