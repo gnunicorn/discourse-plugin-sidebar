@@ -38,7 +38,7 @@ var SuggestedTopicsWidget = Ember.View.extend({
         var handler = this.get("handlerInfos").find(function(x){ return x.name === "topic"})
         if (!handler) return;
         return handler.context.get("details.suggested_topics");
-    }.property("handlerInfos")
+    }.property("handlerInfos.@each.details.suggested_topics")
 });
 
 var TopicStatsPageView = Ember.View.extend({

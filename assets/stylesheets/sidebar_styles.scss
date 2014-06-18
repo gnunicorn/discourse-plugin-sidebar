@@ -46,6 +46,21 @@
   max-width: 29%;
 }
 
+.side-bar .unanswered-topics .like-count,
+.side-bar .suggested-topics .like-count {
+  display: inline-block;
+  color: white;
+  margin-left: -1.3em;
+  margin-right: 1.25em;
+  line-height: 2em;
+  vertical-align: top;
+}
+
+.side-bar .unanswered-topics ul,
+.side-bar .suggested-topics ul {
+  list-style: none;
+}
+
 // fix hard-coded overflow issues
 
 
