@@ -122,6 +122,45 @@ var CategoryFeaturedUsers = Ember.View.extend(CategoryViewMixing, {
 
 });
 
+
+var CategoryCreateButtonView = Ember.View.extend({
+    classNameBindings: ["shouldBeHidden:hidden"],
+    templateName: "sidebar_create_button",
+    tagName: "div",
+
+    canCreateTopic: function() {
+        var controller = this.get("controller");
+        if (this.get("isCategoryView")) {
+            return controller.controllerFor('navigation/category').get("canCreateTopic");
+        } else if (this.get("currentControllerName").indexOf("discovery") !== -1) {
+            return controller.controllerFor('navigation/default').get("canCreateTopic");
+        }
+    }.property("currentControllerName"),
+
+    canChangeCategoryNotificationLevel: function() {
+        return this.get("isCategoryView") && Discourse.User.currentProp('staff');
+    }.property("isCategoryView"),
+
+    canEditCategory: function() {
+        return this.get("isCategoryView") && Discourse.User.current();
+    }.property("isCategoryView"),
+
+    category: function(){
+        return this.get("isCategoryView") && this.get("currentController.context");
+    }.property("isCategoryView", "currentController.context"),
+
+    isCategoryView: function() {
+        return this.get("currentControllerName").indexOf("category") !== -1;
+    }.property("currentControllerName"),
+
+    shouldBeHidden: function(){
+        // we only show up on category pages
+        return this.get("currentControllerName").indexOf("discovery") === -1;
+    }.property("currentControllerName")
+
+
+});
+
 var UserStatsView = Ember.View.extend({
     templateName: "sidebar_user_stats",
     tagName: "div",
@@ -184,5 +223,6 @@ Discourse.SidebarView.reopen({
     suggested_topics: SuggestedTopicsWidget.create(),
     category_featured_users: CategoryFeaturedUsers.create(),
     category_info: CategoryInfoView.create(),
+    category_button: CategoryCreateButtonView.create(),
     topic_stats: TopicStatsPageView.create()
 });
