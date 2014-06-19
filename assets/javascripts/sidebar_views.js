@@ -107,7 +107,7 @@ var SubcategoriesView = Ember.View.extend(CategoryViewMixing, {
     subcategories: function() {
         var category = this.get("category");
         return category ? category.subcategories : []
-    }.property("category"),
+    }.property("category")
 
 });
 
@@ -118,7 +118,7 @@ var CategoryFeaturedUsers = Ember.View.extend(CategoryViewMixing, {
     featured_users: function() {
         var category = this.get("category");
         return category ? category.featured_users : [];
-    }.property("category"),
+    }.property("category")
 
 });
 
