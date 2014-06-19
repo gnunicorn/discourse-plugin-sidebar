@@ -67,6 +67,14 @@
   width: auto;
 }
 
+.side-bar aside .notification-options {
+  display: inline-block
+}
+
+.side-bar aside .notification-options .dropdown-toggle {
+  float: none;
+}
+
 
 @media screen and (min-width: 1550px) {
     .full-width {
