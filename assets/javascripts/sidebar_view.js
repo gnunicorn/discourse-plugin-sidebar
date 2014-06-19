@@ -15,6 +15,11 @@ Discourse.SidebarView = Discourse.ContainerView.extend({
         this.urlChanged(router); // initial call
     },
 
+    didInsertElement: function(){
+        // trigger the urlChanged for the first time
+        this.urlChanged(Discourse.URL.get("router"));
+    },
+
     urlChanged: function(router) {
         var url = router.get("url"),
             handlerInfos = router.router.currentHandlerInfos,
