@@ -24,8 +24,8 @@ Discourse.SidebarView = Discourse.ContainerView.extend({
                     currentControllerName: controllerName,
                     currentController: deepest};
 
-        if (url.indexOf("/admin/") === 0){
-            // we are on admin-pages. HIDE!
+        if (url.match(/^\/(users|admin|tagger\/admin)\//)){
+            // we are on admin and user profiles pags. HIDE!
             $(".sidebar").hide();
             $(".main-outlet-wrap").css("width", "100%");
         } else {
