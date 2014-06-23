@@ -123,7 +123,7 @@ var CategoryFeaturedUsers = Ember.View.extend(CategoryViewMixing, {
 });
 
 
-var CategoryCreateButtonView = Ember.View.extend({
+var CreateButtonView = Ember.View.extend({
     classNameBindings: ["shouldBeHidden:hidden"],
     templateName: "sidebar_create_button",
     tagName: "div",
@@ -223,6 +223,6 @@ Discourse.SidebarView.reopen({
     suggested_topics: SuggestedTopicsWidget.create(),
     category_featured_users: CategoryFeaturedUsers.create(),
     category_info: CategoryInfoView.create(),
-    category_button: CategoryCreateButtonView.create(),
+    create_button: CreateButtonView.create(),
     topic_stats: TopicStatsPageView.create()
 });
