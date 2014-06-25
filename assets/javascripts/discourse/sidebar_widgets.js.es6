@@ -66,7 +66,11 @@ var UnansweredTopicsWidget = Ember.View.extend({
     classNameBindings: ["shouldBeHidden:hidden", "sidebar-unanswered"],
     didInsertElement: function() {
         Discourse.ajax("/latest.json?max_posts=1").then(function(resp){
-            this.set("unansweredTopics", resp.topic_list.topics);
+          var unanswered_topics = Em.A();
+          resp.topic_list.topics.forEach(function(topic){
+            unanswered_topics.addObject(Discourse.Topic.create(topic));
+          });
+          this.set("unansweredTopics", unanswered_topics);
         }.bind(this)).catch(function(x){
             console.error(x);
         });
