@@ -1,7 +1,22 @@
+/**
+  This view acts as container for sidebae widgets
 
-Discourse.SidebarView = Discourse.ContainerView.extend({
+  @class ContainerView
+  @extends Discourse.ContainerView
+  @namespace Discourse
+  @module Discourse
+**/
+
+import Widgets from "discourse/plugins/sidebar/discourse/sidebar_widgets";
+
+export default Discourse.ContainerView.extend({
     init: function(){
         this._super();
+
+        for (name in Widgets){
+            this.set(name, Widgets[name].create());
+        }
+
         var widgets = Discourse.SiteSettings.sidebar_widgets.split("|") || ["stats"];
         widgets.forEach(function(item, idx){
             if (!item) return;
@@ -9,6 +24,7 @@ Discourse.SidebarView = Discourse.ContainerView.extend({
             if (!view) return;
             this.pushObject(view);
         }.bind(this));
+
 
         var router = Discourse.URL.get("router");
         router.addObserver("url", this, "urlChanged");

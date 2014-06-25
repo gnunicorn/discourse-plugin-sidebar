@@ -1,4 +1,4 @@
-//= require_tree ./discourse/templates
+//= require_tree ./templates
 
 var FacebookPageView = Ember.View.extend({
     templateName: "sidebar_fb_page",
@@ -194,7 +194,6 @@ var UserNotificationsView = Ember.View.extend({
     classNameBindings: ["shouldBeHidden:hidden"],
     didInsertElement: function(){
         Discourse.ajax("/notifications").then(function(result) {
-            console.log(result);
             this.set("notifications", result);
         }.bind(this));
     },
@@ -213,16 +212,16 @@ var CategoryInfoView = Ember.View.extend(CategoryViewMixing, {
 });
 
 
-Discourse.SidebarView.reopen({
-    facebook_page: FacebookPageView.create(),
-    subcategories: SubcategoriesView.create(),
-    signup: SignupView.create(),
-    user_stats: UserStatsView.create(),
-    unanswered_topics: UnansweredTopicsWidget.create(),
-    user_notifications: UserNotificationsView.create(),
-    suggested_topics: SuggestedTopicsWidget.create(),
-    category_featured_users: CategoryFeaturedUsers.create(),
-    category_info: CategoryInfoView.create(),
-    create_button: CreateButtonView.create(),
-    topic_stats: TopicStatsPageView.create()
-});
+export default {
+    facebook_page: FacebookPageView,
+    subcategories: SubcategoriesView,
+    signup: SignupView,
+    user_stats: UserStatsView,
+    unanswered_topics: UnansweredTopicsWidget,
+    user_notifications: UserNotificationsView,
+    suggested_topics: SuggestedTopicsWidget,
+    category_featured_users: CategoryFeaturedUsers,
+    category_info: CategoryInfoView,
+    create_button: CreateButtonView,
+    topic_stats: TopicStatsPageView
+};
