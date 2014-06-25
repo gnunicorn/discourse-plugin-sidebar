@@ -1,0 +1,7 @@
+<%- if object.plugins_sidebar.present? %>
+  <aside class="sidebar">
+    <%- object.plugins_sidebar.each do |element| %>
+      <%= render element, object: element %>
+    <%- end %>
+  </aside>
+<%- end %>
