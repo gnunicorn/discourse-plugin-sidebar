@@ -176,7 +176,7 @@ var UserStatsView = Ember.View.extend({
                 ).then(function(resp){
                     this.set("badges", resp.badges);
                     this.set("user", resp.user);
-                    for (key in Discourse.UserAction.TYPES){
+                    for (var key in Discourse.UserAction.TYPES){
                         this.set(key, this.get_stat(Discourse.UserAction.TYPES[key]))
                     }
                 }.bind(this)).catch(function(resp){
