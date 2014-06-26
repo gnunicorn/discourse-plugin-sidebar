@@ -2,10 +2,12 @@ module SidebarConcern
 	extend ActiveSupport::Concern
 
   included do |base|
-    before_filter :sidebar
+    before_action :sidebar
   end
 
 	def sidebar
-    @sidebar = SidebarBox.new
+    if !request.xhr? && current_user
+      @sidebar ||= SidebarBox.new
+    end
 	end
 end
