@@ -1,10 +1,10 @@
 class SidebarBox
   attr_accessor :plugins_sidebar
-  def initialize(controller_name, action_name)
+  def initialize(params)
     @plugins_sidebar = []
     SiteSetting.sidebar_widgets.split("|").each do |element|
       begin
-        @plugins_sidebar << "::Sidebar::#{element.camelcase}".constantize.new(controller_name, action_name)
+        @plugins_sidebar << "::Sidebar::#{element.camelcase}".constantize.new(params)
       rescue NameError => e
       end
   	end
