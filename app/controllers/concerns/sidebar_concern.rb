@@ -7,7 +7,7 @@ module SidebarConcern
 
 	def sidebar
     if !request.xhr? && current_user
-      @sidebar ||= SidebarBox.new
+      @sidebar ||= SidebarBox.new(params[:controller], params[:action])
     end
 	end
 end
