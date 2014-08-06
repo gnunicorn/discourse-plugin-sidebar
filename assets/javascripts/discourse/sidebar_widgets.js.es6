@@ -45,6 +45,8 @@ var TopicStatsPageView = Ember.View.extend({
     templateName: "sidebar_topic_stats",
     tagName: "div",
     classNameBindings: ["shouldBeHidden:hidden"],
+    participantsCollapsed: true,
+    classNames: ["topic_stats"],
     // only show on list pages
     shouldBeHidden: function(){
         // we only show up on topic pages

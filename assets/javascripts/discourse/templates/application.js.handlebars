@@ -1,6 +1,6 @@
 {{render "header"}}
 
-<div id='main-outlet'>
+<div id='main-outlet' {{bind-attr class=backgroundClass}}>
     <div class="side-bar">
         <section class="main-outlet-wrap">{{outlet}}</section>
         <aside class="sidebar">{{view Discourse.SidebarView}}</aside>

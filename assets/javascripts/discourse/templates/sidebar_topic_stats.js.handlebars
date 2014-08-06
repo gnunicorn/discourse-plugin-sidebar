@@ -1,39 +1,23 @@
 {{# if view.topic}}
-<h3>Topic Stats</h3>
-<ul>
+  {{!-- <h3>Topic Stats</h3> --}}
+  <ul>
+    <li>Created {{date view.topic.created_at}} {{!-- {{topic-participant participant=view.topic.details.created_by}} --}}</li>
     <li>
-      <a href='{{unbound view.topic.url}}' class='{{!coldAgeClass view.topic.created_at}}'>
-      <h4>{{i18n created}}</h4>
-      {{avatar view.topic.details.created_by imageSize="tiny"}}
-      {{!unboundDate view.topic.created_at}}
-      </a>
+    </li>
+      Last post {{date view.topic.created_at}}
     </li>
     <li>
-      <a {{bind-attr href="topic.lastPostUrl"}}>
-      <h4>{{i18n last_post}}</h4>
-      {{avatar view.topic.details.last_poster imageSize="tiny"}}
-      {{!unboundDate view.topic.last_posted_at}}
-      </a>
+      {{i18n views}} {{number view.topic.views class=topic.viewsHeat}}, {{i18n posts}} {{number view.topic.posts_count}}
     </li>
-    <li>
-      <h4>{{i18n posts}}</h4>
-      {{number view.topic.posts_count}}
-    </li>
-    <li class='secondary'>
-      <h4>{{i18n views}}</h4>
-      {{number view.topic.views class=topic.viewsHeat}}
-    </li>
-    <li class='secondary'>
-      <h4>{{i18n users}}</h4>
-      {{number view.topic.participant_count}}
-    </li>
-    {{#if view.topic.like_count}}
-      <li class='secondary'>
-        <h4>{{i18n likes}}</h4>
-        <i class='fa fa-heart'></i> {{number view.topic.like_count}}
-      </li>
+  </ul>
+  <hr>
+  {{i18n Participants}} {{number view.topic.participant_count}}
+  <ul>
+    {{#if view.participantsCollapsed}}
+      {{#groupedEach participant in view.topic.details.fewParticipants}}{{topic-participant participant=participant}}{{/groupedEach}}
+    {{else}}
+      {{#groupedEach participant in details.participants}}{{topic-participant participant=participant}}{{/groupedEach}}
     {{/if}}
-</ul>
-
+  </ul>
 {{/if}}
 
