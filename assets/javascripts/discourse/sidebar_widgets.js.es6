@@ -144,16 +144,25 @@ var CreateButtonView = Ember.View.extend({
     }.property("currentControllerName"),
 
     canChangeCategoryNotificationLevel: function() {
-        return this.get("isCategoryView") && Discourse.User.currentProp('staff');
+        return this.get("isCategoryView") && Discourse.User.current();
     }.property("isCategoryView"),
 
     canEditCategory: function() {
-        return this.get("isCategoryView") && Discourse.User.current();
+        return this.get("isCategoryView") && Discourse.User.currentProp('staff');
     }.property("isCategoryView"),
+
+    canCreateCategory: function() {
+        console.log(this.get("isCategoriesView"), Discourse.User.currentProp('staff'));
+        return this.get("isCategoriesView") && Discourse.User.currentProp('staff');
+    }.property("isCategoriesView"),
 
     category: function(){
         return this.get("isCategoryView") && this.get("currentController.context");
     }.property("isCategoryView", "currentController.context"),
+
+    isCategoriesView: function() {
+        return this.get("currentControllerName").indexOf("categories") !== -1;
+    }.property("currentControllerName"),
 
     isCategoryView: function() {
         return this.get("currentControllerName").indexOf("category") !== -1;
