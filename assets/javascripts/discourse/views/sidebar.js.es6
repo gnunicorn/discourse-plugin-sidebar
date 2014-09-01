@@ -10,9 +10,8 @@
 import Widgets from "discourse/plugins/sidebar/discourse/sidebar_widgets";
 
 export default Discourse.ContainerView.extend({
-    init: function(){
-        this._super();
-
+    willInsertElement: function(){
+        // trigger the urlChanged for the first time
         for (name in Widgets){
             this.set(name, Widgets[name].create());
         }
@@ -22,17 +21,13 @@ export default Discourse.ContainerView.extend({
             if (!item) return;
             var view = this.get(item);
             if (!view) return;
+            console.log(item, view);
             this.pushObject(view);
         }.bind(this));
 
 
         var router = Discourse.URL.get("router");
         router.addObserver("url", this, "urlChanged");
-        this.urlChanged(router); // initial call
-    },
-
-    didInsertElement: function(){
-        // trigger the urlChanged for the first time
         this.urlChanged(Discourse.URL.get("router"));
     },
 
