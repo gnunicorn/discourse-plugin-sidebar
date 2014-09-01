@@ -152,7 +152,6 @@ var CreateButtonView = Ember.View.extend({
     }.property("isCategoryView"),
 
     canCreateCategory: function() {
-        console.log(this.get("isCategoriesView"), Discourse.User.currentProp('staff'));
         return this.get("isCategoriesView") && Discourse.User.currentProp('staff');
     }.property("isCategoriesView"),
 
