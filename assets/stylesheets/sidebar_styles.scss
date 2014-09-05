@@ -89,6 +89,20 @@
   }
 }
 
+
+@media all and (max-width: 850px) {
+  /* line 18, /vagrant/app/assets/stylesheets/desktop/discourse.scss */
+  body {
+    min-width: 760px;
+  }
+
+  /* line 22, /vagrant/app/assets/stylesheets/desktop/discourse.scss */
+  .container,
+  .full-width {
+    min-width: auto;
+  }
+}
+
 @media screen and (max-width: 966px) {
 
   .container,
