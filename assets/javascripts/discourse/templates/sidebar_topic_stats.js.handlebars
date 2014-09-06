@@ -2,16 +2,16 @@
   <h3>{{i18n topic_stats.title }}</h3>
   <dl>
     <dt>{{i18n topic_stats.created}}</dt>
-    <dd>{{date view.topic.created_at}}</dd>
+    <dd>{{bound-date view.topic.created_at}}</dd>
     <dt>{{i18n topic_stats.last_answer}}</dt>
-    <dd>{{date view.topic.last_posted_at}}</dd>
+    <dd>{{bound-date view.topic.last_posted_at}}</dd>
     <dt>{{i18n topic_stats.views}}</dt>
-    <dd class="inline">{{number view.topic.views class=topic.viewsHeat}}, </dd>
+    <dd class="inline">{{view.topic.views}}, </dd>
     <dt>{{i18n topic_stats.posts}}</dt>
-    <dd>{{number view.topic.posts_count}}</dd>
+    <dd>{{view.topic.posts_count}}</dd>
   </dl>
   <div class="participants">
-    {{i18n topic_stats.participants}} {{number view.topic.participant_count}}
+    {{i18n topic_stats.participants}} {{view.topic.participant_count}}
     <div>
       {{#if view.participantsCollapsed}}
         {{#groupedEach participant in view.topic.details.fewParticipants}}{{topic-participant participant=participant}}{{/groupedEach}}
