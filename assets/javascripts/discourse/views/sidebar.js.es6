@@ -21,7 +21,6 @@ export default Discourse.ContainerView.extend({
             if (!item) return;
             var view = this.get(item);
             if (!view) return;
-            console.log(item, view);
             this.pushObject(view);
         }.bind(this));
 
