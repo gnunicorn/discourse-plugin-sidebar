@@ -1,23 +1,25 @@
-{{# if view.topic}}
-  {{!-- <h3>Topic Stats</h3> --}}
-  <ul>
-    <li>Created {{date view.topic.created_at}} {{!-- {{topic-participant participant=view.topic.details.created_by}} --}}</li>
-    <li>
-    </li>
-      Last post {{date view.topic.created_at}}
-    </li>
-    <li>
-      {{i18n views}} {{number view.topic.views class=topic.viewsHeat}}, {{i18n posts}} {{number view.topic.posts_count}}
-    </li>
-  </ul>
-  <hr>
-  {{i18n Participants}} {{number view.topic.participant_count}}
-  <ul>
-    {{#if view.participantsCollapsed}}
-      {{#groupedEach participant in view.topic.details.fewParticipants}}{{topic-participant participant=participant}}{{/groupedEach}}
-    {{else}}
-      {{#groupedEach participant in details.participants}}{{topic-participant participant=participant}}{{/groupedEach}}
-    {{/if}}
-  </ul>
+{{#if view.topic}}
+  <h3>{{i18n topic_stats.title }}</h3>
+  <dl>
+    <dt>{{i18n topic_stats.created}}</dt>
+    <dd>{{date view.topic.created_at}}</dd>
+    <dt>{{i18n topic_stats.last_answer}}</dt>
+    <dd>{{date view.topic.last_posted_at}}</dd>
+    <dt>{{i18n topic_stats.views}}</dt>
+    <dd class="inline">{{number view.topic.views class=topic.viewsHeat}}, </dd>
+    <dt>{{i18n topic_stats.posts}}</dt>
+    <dd>{{number view.topic.posts_count}}</dd>
+  </dl>
+  <div class="participants">
+    {{i18n topic_stats.participants}} {{number view.topic.participant_count}}
+    <div>
+      {{#if view.participantsCollapsed}}
+        {{#groupedEach participant in view.topic.details.fewParticipants}}{{topic-participant participant=participant}}{{/groupedEach}}
+      {{else}}
+        {{#groupedEach participant in details.participants}}{{topic-participant participant=participant}}{{/groupedEach}}
+      {{/if}}
+    </div>
+
+  </div>
 {{/if}}
 
