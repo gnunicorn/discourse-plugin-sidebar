@@ -17,11 +17,11 @@
     }
 }
 
-.global-side-bar.no-side-bar  aside.side-bar {
+.global-side-bar.no-side-bar > aside.side-bar {
     display: none;
 }
 
-.global-side-bar.no-side-bar  section.main-outlet-wrap {
+.global-side-bar.no-side-bar > section.main-outlet-wrap {
   width: 100%;
 }
 
