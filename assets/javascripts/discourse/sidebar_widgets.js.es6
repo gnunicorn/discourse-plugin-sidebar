@@ -30,6 +30,8 @@ var SuggestedTopicsWidget = Ember.View.extend({
     templateName: "sidebar_suggested_topics",
     tagName: "div",
     classNameBindings: ["shouldBeHidden:hidden", "sidebar-suggested"],
+    handlerInfos: [],
+
     shouldBeHidden: function(){
         return !this.get("suggestedTopics");
     }.property("suggestedTopics"),
@@ -47,6 +49,8 @@ var TopicStatsPageView = Ember.View.extend({
     classNameBindings: ["shouldBeHidden:hidden"],
     participantsCollapsed: true,
     classNames: ["topic_stats"],
+    currentControllerName: "",
+    handlerInfos: [],
     // only show on list pages
     shouldBeHidden: function(){
         // we only show up on topic pages
@@ -83,6 +87,7 @@ var UnansweredTopicsWidget = Ember.View.extend({
 });
 
 var CategoryViewMixing = Ember.Mixin.create({
+    currentControllerName: "",
     classNameBindings: ["shouldBeHidden:hidden"],
     didInsertElement: function(){
         Discourse.CategoryList.list('categories'
@@ -132,6 +137,7 @@ var CategoryFeaturedUsers = Ember.View.extend(CategoryViewMixing, {
 var CreateButtonView = Ember.View.extend({
     classNameBindings: ["shouldBeHidden:hidden"],
     templateName: "sidebar_create_button",
+    currentControllerName: "",
     tagName: "div",
 
     canCreateTopic: function() {

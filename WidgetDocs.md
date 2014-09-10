@@ -14,7 +14,7 @@ So the only thing to register a new Widget means adding it onto SidebarView
 
 ```
 Discourse.SidebarView.reopen({
-        myAwesomeWidget: MyWidgetView.create()
+        myAwesomeWidget: MyWidgetView
 });
 ```
 
@@ -69,7 +69,7 @@ As Widgets are normal Ember Views so far nothing sidebar specific has been neede
 ```
 if (Discourse.SidebarView){
     Discourse.SidebarView.reopen({
-        topicStats: TopicStatsPageViewWidget.create()
+        topicStats: TopicStatsPageViewWidget
     });
 }
 ```

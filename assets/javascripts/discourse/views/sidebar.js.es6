@@ -1,5 +1,5 @@
 /**
-  This view acts as container for sidebae widgets
+  This view acts as container for sidebar widgets
 
   @class ContainerView
   @extends Discourse.ContainerView
@@ -10,28 +10,41 @@
 import Widgets from "discourse/plugins/sidebar/discourse/sidebar_widgets";
 
 export default Discourse.ContainerView.extend({
-    willInsertElement: function(){
-        // trigger the urlChanged for the first time
-        for (name in Widgets){
-            this.set(name, Widgets[name].create());
-        }
+    name: "global",
+    updateOnRouting: true,
+    init: function() {
+        this._super();
 
-        var widgets = Discourse.SiteSettings.sidebar_widgets.split("|") || ["stats"];
+        var widgets = Discourse.SiteSettings.sidebar_widgets.split("|") || ["stats"],
+            sidebar = this;
+
         widgets.forEach(function(item, idx){
             if (!item) return;
-            var view = this.get(item);
+            var view = sidebar.get(item) || Widgets[item];
             if (!view) return;
-            this.pushObject(view);
+            sidebar.pushObject(sidebar.createChildView(view));
         }.bind(this));
+    },
 
+    willInsertElement: function() {
+        if (this.get("updateOnRouting")) {
+            console.log("ROUTING");
+            var router = Discourse.URL.get("router");
+            router.addObserver("url", this, "urlChanged");
+        }
+    },
 
-        var router = Discourse.URL.get("router");
-        router.addObserver("url", this, "urlChanged");
+    didInsertElement: function() {
         this.urlChanged(Discourse.URL.get("router"));
     },
 
     urlChanged: function(router) {
+        if (this.state != "inDOM") return;
+
         var url = router.get("url"),
+            name = this.get("name"),
+            hide = false,
+            me = this,
             handlerInfos = router.router.currentHandlerInfos,
             deepest = handlerInfos.length ? handlerInfos[handlerInfos.length -1] : "",
             controllerName = deepest.name,
@@ -39,18 +52,30 @@ export default Discourse.ContainerView.extend({
                     currentControllerName: controllerName,
                     currentController: deepest};
 
-        if (url.match(/^\/(users|admin|tagger\/admin)\//)){
-            // we are on admin and user profiles pags. HIDE!
-            $(".sidebar").hide();
-            $(".main-outlet-wrap").css("width", "100%");
-        } else {
-            $(".sidebar").show();
-            $(".main-outlet-wrap").css("width", "");
+        if (handlerInfos.length){
+            hide = !!handlerInfos.find(function(info){
+                return info.handler.controller.get("hide_" + name + "_sidebar")
+            });
+        }
+
+        if (this.get("_last_hide_state") !== hide){
+            this.set("_last_hide_state", hide);
+            try {
+                if (hide){
+                    this.get("controller").send("hideSidebar", name);
+                } else {
+                    this.get("controller").send("showSidebar", name);
+                }
+            } catch (e) {
+                if (console) {
+                    console.error("No one is interested in hiding " + name + " sidebar", e);
+                }
+            }
         }
 
         this.forEach(function(view){
-            view.setProperties(data);
-            view.trigger("urlChanged");
+                view.setProperties(data);
+                view.trigger("urlChanged");
         });
     }
 });

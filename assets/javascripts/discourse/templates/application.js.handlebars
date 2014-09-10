@@ -1,9 +1,9 @@
 {{render "header"}}
 
 <div id='main-outlet' {{bind-attr class=backgroundClass}}>
-    <div class="side-bar">
+    <div {{bind-attr class=":global-side-bar :side-bar-wrap hideSidebar:no-side-bar"}}>
         <section class="main-outlet-wrap">{{outlet}}</section>
-        <aside class="sidebar">{{view Discourse.SidebarView}}</aside>
+        <aside class="side-bar">{{view Discourse.SidebarView}}</aside>
     </div>
 </div>
 

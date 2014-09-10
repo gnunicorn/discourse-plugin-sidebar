@@ -1,10 +1,11 @@
 
-.side-bar section.main-outlet-wrap {
+
+.side-bar-wrap section.main-outlet-wrap {
     width: 73%;
     display: inline-block;
 }
 
-.side-bar aside.sidebar {
+.side-bar-wrap aside.side-bar {
     display: inline-block;
     width: 25%;
     margin-left: 1%;
@@ -16,8 +17,12 @@
     }
 }
 
-.no-sidebar aside.sidebar {
+.global-side-bar.no-side-bar  aside.side-bar {
     display: none;
+}
+
+.global-side-bar.no-side-bar  section.main-outlet-wrap {
+  width: 100%;
 }
 
 // unfortunately that means we don't have space for the gutter, hide it
@@ -46,8 +51,8 @@
   max-width: 29%;
 }
 
-.side-bar .unanswered-topics .like-count,
-.side-bar .suggested-topics .like-count {
+.side-bar-wrap .unanswered-topics .like-count,
+.side-bar-wrap .suggested-topics .like-count {
   display: inline-block;
   color: white;
   margin-left: -1.3em;
@@ -56,8 +61,8 @@
   vertical-align: top;
 }
 
-.side-bar .unanswered-topics ul,
-.side-bar .suggested-topics ul {
+.side-bar-wrap .unanswered-topics ul,
+.side-bar-wrap .suggested-topics ul {
   list-style: none;
 }
 
@@ -67,11 +72,11 @@
   width: auto;
 }
 
-.side-bar aside .notification-options {
+.side-bar-wrap aside .notification-options {
   display: inline-block
 }
 
-.side-bar aside .notification-options .dropdown-toggle {
+.side-bar-wrap aside .notification-options .dropdown-toggle {
   float: none;
 }
 
