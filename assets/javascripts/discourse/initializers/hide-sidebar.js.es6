@@ -4,6 +4,7 @@ export default {
   initialize: function(container, application) {
     var AdminController = container.lookupFactory("controller:admin"),
         ApplicationController = container.lookupFactory("controller:application"),
+        UserController = container.lookupFactory("controller:user"),
         TaggerAdminController = container.lookupFactory("controller:tagger_admin");
 
     ApplicationController.reopen({
@@ -20,6 +21,10 @@ export default {
                 }
             }
         }
+    });
+    
+    UserController.reopen({
+        hide_global_sidebar: true
     });
 
     AdminController && AdminController.reopen({
