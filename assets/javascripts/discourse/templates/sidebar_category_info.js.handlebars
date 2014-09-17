@@ -1,5 +1,15 @@
+<dl>
+    <dt class="desc">{{i18n topics.title}}</dt>
+    <dd>{{view.category.topic_count}}</dd>
+    <dt class="desc">{{i18n posts}}</dt>
+    <dd>{{view.category.post_count}}</dd>
+</dl>
+{{#if view.category.featured_users.firstObject}}
+    <hr>
+    <span class="desc">{{i18n category.mod_description}} <a {{bind-attr href="view.category.featured_users.firstObject.path"}}>{{view.category.featured_users.firstObject.username}}</a></span>
+{{/if}}
 <hr>
-<h2>About {{view.category.title}}</h2>
+<h3>{{i18n category.description}}</h3>
 <p>
   {{view.category.topic.excerpt}}
 </p>

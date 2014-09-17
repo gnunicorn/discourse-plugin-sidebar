@@ -225,7 +225,7 @@ var UserNotificationsView = Ember.View.extend({
 var CategoryInfoView = Ember.View.extend(CategoryViewMixing, {
     templateName: "sidebar_category_info",
     tagName: "div",
-    classNameBindings: ["shouldBeHidden:hidden"],
+    classNameBindings: ["shouldBeHidden:hidden", ":category-info"],
     shouldBeHidden: function(){
         return !this.get("category.topic.excerpt")
     }.property("category")
