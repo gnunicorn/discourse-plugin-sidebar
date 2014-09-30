@@ -28,7 +28,6 @@ export default Discourse.ContainerView.extend({
 
     willInsertElement: function() {
         if (this.get("updateOnRouting")) {
-            console.log("ROUTING");
             var router = Discourse.URL.get("router");
             router.addObserver("url", this, "urlChanged");
         }
