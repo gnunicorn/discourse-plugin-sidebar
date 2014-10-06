@@ -8,21 +8,24 @@ export default {
         TaggerAdminController = container.lookupFactory("controller:tagger_admin");
 
     ApplicationController.reopen({
-        hideSidebar: false,
+        hideSidebar: function(){
+            return Discourse.Mobile.mobileView || this.get("askedToHideSidebar");
+        }.property("askedToHideSidebar"),
+        askedToHideSidebar: false,
         actions: {
             showSidebar: function(name){
                 if (name === "global"){
-                    this.set("hideSidebar", false);
+                    this.set("askedToHideSidebar", false);
                 }
             },
             hideSidebar: function(name){
                 if (name === "global"){
-                    this.set("hideSidebar", true);
+                    this.set("askedToHideSidebar", true);
                 }
             }
         }
     });
-    
+
     UserController.reopen({
         hide_global_sidebar: true
     });
