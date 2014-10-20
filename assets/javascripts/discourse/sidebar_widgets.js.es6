@@ -1,7 +1,7 @@
-//= require_tree ./templates
+//= require_tree ./templates/sidebar
 
 var FacebookPageView = Ember.View.extend({
-    templateName: "sidebar_fb_page",
+    templateName: "sidebar/fb_page",
     tagName: "div",
     fb_page: function(){
         return Discourse.SiteSettings.sidebar_fb_page;
@@ -18,7 +18,7 @@ var SignupController = Ember.Controller.extend({
 });
 
 var SignupView = Ember.View.extend({
-    templateName: "sidebar_signup",
+    templateName: "sidebar/signup",
     tagName: "div",
     classNameBindings: ["shouldBeHidden:hidden"],
     shouldBeHidden: function(){
@@ -27,7 +27,7 @@ var SignupView = Ember.View.extend({
 });
 
 var SuggestedTopicsWidget = Ember.View.extend({
-    templateName: "sidebar_suggested_topics",
+    templateName: "sidebar/suggested_topics",
     tagName: "div",
     classNameBindings: ["shouldBeHidden:hidden", "sidebar-suggested"],
     handlerInfos: [],
@@ -44,7 +44,7 @@ var SuggestedTopicsWidget = Ember.View.extend({
 });
 
 var TopicStatsPageView = Ember.View.extend({
-    templateName: "sidebar_topic_stats",
+    templateName: "sidebar/topic_stats",
     tagName: "div",
     classNameBindings: ["shouldBeHidden:hidden"],
     participantsCollapsed: true,
@@ -67,7 +67,7 @@ var TopicStatsPageView = Ember.View.extend({
 
 
 var UnansweredTopicsWidget = Ember.View.extend({
-    templateName: "sidebar_unanswered_topics",
+    templateName: "sidebar/unanswered_topics",
     tagName: "div",
     classNameBindings: ["shouldBeHidden:hidden", "sidebar-unanswered"],
     didInsertElement: function() {
@@ -112,7 +112,7 @@ var CategoryViewMixing = Ember.Mixin.create({
 });
 
 var SubcategoriesView = Ember.View.extend(CategoryViewMixing, {
-    templateName: "sidebar_subcategories",
+    templateName: "sidebar/subcategories",
     tagName: "div",
 
     subcategories: function() {
@@ -123,7 +123,7 @@ var SubcategoriesView = Ember.View.extend(CategoryViewMixing, {
 });
 
 var CategoryFeaturedUsers = Ember.View.extend(CategoryViewMixing, {
-    templateName: "sidebar_featured_users",
+    templateName: "sidebar/featured_users",
     tagName: "div",
 
     featured_users: function() {
@@ -136,7 +136,7 @@ var CategoryFeaturedUsers = Ember.View.extend(CategoryViewMixing, {
 
 var CreateButtonView = Ember.View.extend({
     classNameBindings: ["shouldBeHidden:hidden"],
-    templateName: "sidebar_create_button",
+    templateName: "sidebar/create_button",
     currentControllerName: "",
     tagName: "div",
 
@@ -182,7 +182,7 @@ var CreateButtonView = Ember.View.extend({
 });
 
 var UserStatsView = Ember.View.extend({
-    templateName: "sidebar_user_stats",
+    templateName: "sidebar/user_stats",
     tagName: "div",
     classNameBindings: ["shouldBeHidden:hidden"],
     didInsertElement: function(){
@@ -209,7 +209,7 @@ var UserStatsView = Ember.View.extend({
 });
 
 var UserNotificationsView = Ember.View.extend({
-    templateName: "sidebar_user_notifications",
+    templateName: "sidebar/user_notifications",
     tagName: "div",
     classNameBindings: ["shouldBeHidden:hidden"],
     didInsertElement: function(){
@@ -223,7 +223,7 @@ var UserNotificationsView = Ember.View.extend({
 })
 
 var CategoryInfoView = Ember.View.extend(CategoryViewMixing, {
-    templateName: "sidebar_category_info",
+    templateName: "sidebar/category_info",
     tagName: "div",
     classNameBindings: ["shouldBeHidden:hidden", ":category-info"],
     shouldBeHidden: function(){
