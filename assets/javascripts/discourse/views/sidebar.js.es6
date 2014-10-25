@@ -20,8 +20,7 @@ export default Discourse.ContainerView.extend({
         SIDEBAR_DEBUG && console.log("Init Sidebar");
 
         var widgets = Discourse.SiteSettings.sidebar_widgets.split("|") || ["stats"],
-            externalSidebarWidgets = Discourse['external:SidebarWidgets'] || {};
-
+            externalSidebarWidgets = Discourse['external:SidebarWidgets'] || {},
             sidebar = this;
 
         widgets.forEach(function(item, idx){
