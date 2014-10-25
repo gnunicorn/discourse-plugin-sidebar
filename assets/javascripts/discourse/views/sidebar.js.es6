@@ -7,7 +7,7 @@
   @module Discourse
 **/
 
-var SIDEBAR_DEBUG = true;
+var SIDEBAR_DEBUG = false;
 
 import Widgets from "discourse/plugins/sidebar/discourse/sidebar_widgets";
 
