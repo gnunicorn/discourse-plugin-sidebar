@@ -7,20 +7,27 @@
   @module Discourse
 **/
 
+var SIDEBAR_DEBUG = true;
+
 import Widgets from "discourse/plugins/sidebar/discourse/sidebar_widgets";
 
 export default Discourse.ContainerView.extend({
     name: "global",
     updateOnRouting: true,
-    init: function() {
+    init: function(){
         this._super();
 
+        SIDEBAR_DEBUG && console.log("Init Sidebar");
+
         var widgets = Discourse.SiteSettings.sidebar_widgets.split("|") || ["stats"],
+            externalSidebarWidgets = Discourse['external:SidebarWidgets'] || {};
+
             sidebar = this;
 
         widgets.forEach(function(item, idx){
             if (!item) return;
-            var view = sidebar.get(item) || Widgets[item];
+            var view = externalSidebarWidgets[item] || sidebar.get(item) || Widgets[item];
+            SIDEBAR_DEBUG && console.log(view, item);
             if (!view) return;
             sidebar.pushObject(sidebar.createChildView(view));
         }.bind(this));
@@ -61,14 +68,14 @@ export default Discourse.ContainerView.extend({
             this.set("_last_hide_state", hide);
             try {
                 if (hide){
+                    SIDEBAR_DEBUG &&  console.debug("hiding Sidebar: " + name);
                     this.get("controller").send("hideSidebar", name);
                 } else {
+                    SIDEBAR_DEBUG &&  console.debug("showing Sidebar: " + name);
                     this.get("controller").send("showSidebar", name);
                 }
             } catch (e) {
-                if (console) {
-                    console.error("No one is interested in hiding " + name + " sidebar", e);
-                }
+                SIDEBAR_DEBUG && console.error("No one is interested in hiding " + name + " sidebar", e);
             }
         }
 
