@@ -5,16 +5,17 @@
     <dd>{{view.category.post_count}}</dd>
 </dl>
 {{#if view.category.moderators}}
-    <hr>
-    <span class="desc">{{i18n category.mod_description}}
+<div class="moderators">
+    <span>{{i18n category.mod_description}}
 
       {{#each view.category.moderators}}
         <a href="/users/{{unbound username}}">{{username}}</a>
       {{/each}}
     </span>
+</div>
 {{/if}}
-<hr>
 <h3>{{i18n category.description}}</h3>
 <p>
   {{view.category.topic.excerpt}}
+  <a class='topic-link' href='{{unbound view.category.topic.url}}'>{{i18n read_more}}</a>
 </p>
