@@ -4,9 +4,14 @@
     <dt class="desc">{{i18n posts}}</dt>
     <dd>{{view.category.post_count}}</dd>
 </dl>
-{{#if view.category.featured_users.firstObject}}
+{{#if view.category.moderators}}
     <hr>
-    <span class="desc">{{i18n category.mod_description}} <a {{bind-attr href="view.category.featured_users.firstObject.path"}}>{{view.category.featured_users.firstObject.username}}</a></span>
+    <span class="desc">{{i18n category.mod_description}}
+
+      {{#each view.category.moderators}}
+        <a href="/users/{{unbound username}}">{{username}}</a>
+      {{/each}}
+    </span>
 {{/if}}
 <hr>
 <h3>{{i18n category.description}}</h3>
