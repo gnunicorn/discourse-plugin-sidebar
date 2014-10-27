@@ -6,12 +6,12 @@
     <dt>{{i18n topic_stats.last_answer}}</dt>
     <dd>{{bound-date view.topic.last_posted_at}}</dd>
     <dt>{{i18n topic_stats.views}}</dt>
-    <dd class="inline">{{view.topic.views}}, </dd>
+    <dd>{{view.topic.views}}</dd>
     <dt>{{i18n topic_stats.posts}}</dt>
     <dd>{{view.topic.posts_count}}</dd>
   </dl>
   <div class="participants">
-    {{i18n topic_stats.participants}} {{view.topic.participant_count}}
+    {{i18n topic_stats.participants}}
     <div>
       {{#if view.participantsCollapsed}}
         {{#groupedEach participant in view.topic.details.fewParticipants}}{{topic-participant participant=participant}}{{/groupedEach}}
