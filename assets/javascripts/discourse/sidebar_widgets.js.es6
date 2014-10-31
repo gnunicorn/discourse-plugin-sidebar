@@ -226,6 +226,14 @@ var CategoryInfoView = Ember.View.extend(CategoryViewMixing, {
     templateName: "sidebar/category_info",
     tagName: "div",
     classNameBindings: ["shouldBeHidden:hidden", ":category-info"],
+    topic: function(){
+      var topic_data = this.get("category.topic");
+      if (!topic_data) return;
+      topic_data.details = {};
+      var t =  new Discourse.Topic();
+      t.updateFromJson(topic_data);
+      return t;
+    }.property("category.topic"),
     shouldBeHidden: function(){
         return !this.get("category.topic.excerpt")
     }.property("category")
