@@ -29,7 +29,7 @@ var SignupView = Ember.View.extend({
 var SuggestedTopicsWidget = Ember.View.extend({
     templateName: "sidebar/suggested_topics",
     tagName: "div",
-    classNameBindings: ["shouldBeHidden:hidden", "sidebar-suggested"],
+    classNameBindings: ["shouldBeHidden:hidden", ":sidebar-suggested"],
     handlerInfos: [],
 
     shouldBeHidden: function(){
