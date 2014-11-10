@@ -178,8 +178,14 @@ var CreateButtonView = Ember.View.extend({
         return this.get("currentControllerName").indexOf("discovery") === -1;
     }.property("currentControllerName")
 
-
 });
+
+var AdminMenuView = CreateButtonView.extend({
+    shouldBeHidden: function(){
+        // we only show up for admins
+        return Ember.get(Discourse.User.current(), "admin") !== true;
+    }.property("currentControllerName")
+})
 
 var UserStatsView = Ember.View.extend({
     templateName: "sidebar/user_stats",
@@ -251,5 +257,6 @@ export default {
     category_featured_users: CategoryFeaturedUsers,
     category_info: CategoryInfoView,
     create_button: CreateButtonView,
+    admin_menu: AdminMenuView,
     topic_stats: TopicStatsPageView
 };
