@@ -8,3 +8,6 @@ uncategorized:
   sidebar_fb_page:
     default: ""
     client: true
+  sidebar_forum_news_category:
+    default: ""
+    client: true

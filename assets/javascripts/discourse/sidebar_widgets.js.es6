@@ -43,6 +43,32 @@ var SuggestedTopicsWidget = Ember.View.extend({
     }.property("handlerInfos.@each.details.suggested_topics")
 });
 
+
+var ForumNewsWidget = Ember.View.extend({
+    templateName: "sidebar/forum_news",
+    tagName: "div",
+    loading: true,
+    classNameBindings: ["shouldBeHidden:hidden", ":sidebar-suggested"],
+    handlerInfos: [],
+
+    shouldBeHidden: function(){
+        return !Discourse.SiteSettings.sidebar_forum_news_category;
+    }.property("suggestedTopics"),
+
+    didInsertElement: function() {
+        if (!Discourse.SiteSettings.sidebar_forum_news_category) {return};
+        this.set("loading", true);
+        Discourse.ajax("/category/" + Discourse.SiteSettings.sidebar_forum_news_category + "/l/latest.json?max_posts=5").then(function(resp){
+          var topics = resp.topic_list.topics.map(function(topic){
+            return Discourse.Topic.create(topic);
+          }).slice(0, 5);
+          this.setProperties({"topics": topics, loading: false});
+        }.bind(this)).catch(function(x){
+            console.error(x);
+        });
+    }
+});
+
 var TopicStatsPageView = Ember.View.extend({
     templateName: "sidebar/topic_stats",
     tagName: "div",
@@ -258,5 +284,6 @@ export default {
     category_info: CategoryInfoView,
     create_button: CreateButtonView,
     admin_menu: AdminMenuView,
+    forum_news: ForumNewsWidget,
     topic_stats: TopicStatsPageView
 };

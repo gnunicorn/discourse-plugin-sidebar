@@ -3,3 +3,4 @@ en:
     sidebar_overwrite_template: Overwrite the application template with our own (you need to rebuild the assets after changing)
     sidebar_widgets: sidebar widgets to be loaded
     sidebar_fb_page: Facebook Page ID for sidebar widget
+    sidebar_forum_news_category: Category to fetch the latest Forum News from
