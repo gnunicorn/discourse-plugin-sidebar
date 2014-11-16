@@ -243,7 +243,7 @@ var UserStatsView = Ember.View.extend({
 var UserNotificationsView = Ember.View.extend({
     templateName: "sidebar/user_notifications",
     tagName: "div",
-    classNameBindings: ["shouldBeHidden:hidden"],
+    classNameBindings: ["shouldBeHidden:hidden", ":notifications-widget"],
     didInsertElement: function(){
         Discourse.ajax("/notifications").then(function(result) {
             this.set("notifications", result);
