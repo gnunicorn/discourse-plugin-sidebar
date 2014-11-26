@@ -1,11 +1,21 @@
 
 
-.side-bar-wrap section.main-outlet-wrap {
-    width: 73%;
-    display: inline-block;
+.global-side-bar.no-side-bar > aside.side-bar {
+    display: none;
 }
 
-.side-bar-wrap aside.side-bar {
+.global-side-bar.no-side-bar > section.main-outlet-wrap {
+  width: 100%;
+}
+
+.side-bar-wrap {
+
+  section.main-outlet-wrap {
+    width: 73%;
+    display: inline-block;
+  }
+
+  aside.side-bar {
     display: inline-block;
     width: 25%;
     margin-left: 1%;
@@ -15,103 +25,97 @@
         display: none;
       }
     }
-}
+  }
 
-.global-side-bar.no-side-bar > aside.side-bar {
+  // fix hard-coded overflow issues
+  .full-width {
+    width: auto;
+  }
+  // unfortunately that means we don't have space for the gutter, hide it
+  .topic-post .gutter {
     display: none;
-}
+  }
 
-.global-side-bar.no-side-bar > section.main-outlet-wrap {
-  width: 100%;
-}
+  // but we make the other things bigger: yay \o/
+  .container.posts {
+    padding-left: 3%;
+  }
 
-// unfortunately that means we don't have space for the gutter, hide it
-.topic-post .gutter {
-  display: none;
-}
+  .container.posts .topic-body {
+    width: 90%;
+  }
 
-// but we make the other things bigger: yay \o/
-.container.posts {
-  padding-left: 3%;
-}
+  #topic-title {
+    padding-left: 20px;
+  }
 
-.container.posts .topic-body {
-  width: 90%;
-}
+  // user profiles
+  .user-main {
+    max-width: 68%;
+  }
+  .user-navigation {
+    max-width: 29%;
+  }
 
-#topic-title {
-  padding-left: 20px;
-}
+  .unanswered-topics ul,
+  .suggested-topics ul {
+    list-style: none;
+  }
+  .unanswered-topics .like-count,
+  .suggested-topics .like-count {
+    display: inline-block;
+    color: white;
+    margin-left: -1.3em;
+    margin-right: 1.25em;
+    line-height: 2em;
+    vertical-align: top;
+  }
+  aside .notification-options {
+    display: inline-block
+  }
 
-// user profiles
-.user-main {
-  max-width: 68%;
-}
-.user-navigation {
-  max-width: 29%;
-}
-
-.side-bar-wrap .unanswered-topics .like-count,
-.side-bar-wrap .suggested-topics .like-count {
-  display: inline-block;
-  color: white;
-  margin-left: -1.3em;
-  margin-right: 1.25em;
-  line-height: 2em;
-  vertical-align: top;
-}
-
-.side-bar-wrap .unanswered-topics ul,
-.side-bar-wrap .suggested-topics ul {
-  list-style: none;
-}
-
-// fix hard-coded overflow issues
-
-.full-width {
-  width: auto;
-}
-
-.side-bar-wrap aside .notification-options {
-  display: inline-block
-}
-
-.side-bar-wrap aside .notification-options .dropdown-toggle {
-  float: none;
+  aside .notification-options .dropdown-toggle {
+    float: none;
+  }
 }
 
 
 @media screen and (min-width: 1550px) {
+  section.main-outlet-wrap {
     .full-width {
         width: auto;
     }
+  }
 }
 
 @media screen and (min-width: 967px) and (max-width: 1139px) {
-  .container,
-  .full-width {
-    width: auto;
+  .side-bar-wrap {
+    .container,
+    .full-width {
+      width: auto;
+    }
   }
 }
 
 
 @media all and (max-width: 850px) {
-  /* line 18, /vagrant/app/assets/stylesheets/desktop/discourse.scss */
-  body {
-    min-width: 760px;
-  }
-
-  /* line 22, /vagrant/app/assets/stylesheets/desktop/discourse.scss */
-  .container,
-  .full-width {
-    min-width: auto;
+  // body {
+  //   min-width: 760px;
+  // }
+  .side-bar-wrap {
+    .container,
+    .full-width {
+      min-width: auto;
+    }
   }
 }
 
 @media screen and (max-width: 966px) {
 
-  .container,
-  .full-width {
-    width: auto;
+  .side-bar-wrap {
+    .container,
+    .full-width {
+      width: auto;
+    }
   }
 }
