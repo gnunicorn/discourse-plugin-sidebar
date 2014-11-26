@@ -17,6 +17,10 @@ var SignupController = Ember.Controller.extend({
     }
 });
 
+var FreeTextView = Ember.View.extend({
+    templateName: "sidebar/free_text",
+    tagName: "div"
+});
 
 var CategoryListView = Ember.View.extend({
     templateName: "sidebar/category_list",
@@ -289,6 +293,7 @@ export default {
     category_list: CategoryListView,
     signup: SignupView,
     user_stats: UserStatsView,
+    free_text: FreeTextView,
     unanswered_topics: UnansweredTopicsWidget,
     user_notifications: UserNotificationsView,
     suggested_topics: SuggestedTopicsWidget,
