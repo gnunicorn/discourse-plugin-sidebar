@@ -1,4 +1,4 @@
-uncategorized:
+sidebar:
   sidebar_overwrite_template:
     default: true
     client: false
