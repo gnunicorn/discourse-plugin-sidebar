@@ -1,4 +1,4 @@
-
+@import "common/foundation/variables.scss";
 
 .global-side-bar.no-side-bar > aside.side-bar {
     display: none;
@@ -70,14 +70,34 @@
     line-height: 2em;
     vertical-align: top;
   }
-  aside .notification-options {
+  aside.side-bar .notification-options {
     display: inline-block
   }
 
-  aside .notification-options .dropdown-toggle {
+  aside.side-bar .notification-options .dropdown-toggle {
     float: none;
   }
 }
+
+// Sidebar Widget default designs:
+
+
+.side-bar-wrap aside.side-bar {
+  ul.categories-list {
+    list-style: none;
+    margin: 0;
+    li {
+      margin: 0.5em 0;
+      display: inline-block;
+      .clear-badge {
+        color: $primary;
+      }
+    }
+  }
+
+}
+
+
 
 
 @media screen and (min-width: 1550px) {

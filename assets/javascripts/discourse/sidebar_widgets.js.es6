@@ -17,6 +17,17 @@ var SignupController = Ember.Controller.extend({
     }
 });
 
+
+var CategoryListView = Ember.View.extend({
+    templateName: "sidebar/category_list",
+    tagName: "div",
+    categories: function(){
+        return Discourse.Category.list().reject(
+                function(x){ return x.parent_id == 0});
+    }.property()
+});
+
+
 var SignupView = Ember.View.extend({
     templateName: "sidebar/signup",
     tagName: "div",
@@ -275,6 +286,7 @@ var CategoryInfoView = Ember.View.extend(CategoryViewMixing, {
 export default {
     facebook_page: FacebookPageView,
     subcategories: SubcategoriesView,
+    category_list: CategoryListView,
     signup: SignupView,
     user_stats: UserStatsView,
     unanswered_topics: UnansweredTopicsWidget,
