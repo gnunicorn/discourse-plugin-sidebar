@@ -1,6 +1,14 @@
 <h2>{{i18n user.notifications}}</h2>
 <ul>
-    {{#each view.notifications itemController="notification"}}
-      {{notification-item notification=this scope=scope}}
-    {{/each}}
+    {{#if view.loading}}
+        <i class="fa fa-spin fa-spinner"></i>
+    {{else}}
+      {{#if view.notifications}}
+        {{#each view.notifications itemController="notification"}}
+          {{notification-item notification=this scope=scope}}
+        {{/each}}
+      {{else}}
+        <p>{{i18n no_unread_pm}}</p>
+      {{/if}}
+    {{/if}}
 </ul>

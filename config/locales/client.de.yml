@@ -1,4 +1,4 @@
-en:
+de:
   admin_js:
     admin:
       site_settings:
@@ -7,4 +7,4 @@ en:
   js:
     forum_news:
       title: "News"
-    no_unread_pm: No unread private messages
+    no_unread_pm: Keine ungelesenen Privatnachrichten

@@ -260,8 +260,10 @@ var UserNotificationsView = Ember.View.extend({
     tagName: "div",
     classNameBindings: ["shouldBeHidden:hidden", ":notifications-widget"],
     didInsertElement: function(){
+        this.set("loading", true);
         Discourse.ajax("/notifications").then(function(result) {
-            this.set("notifications", result);
+            this.set('loading', false);
+            this.set("notifications", result.rejectBy("read").slice(0, 7));
         }.bind(this));
     },
     shouldBeHidden: function(){
