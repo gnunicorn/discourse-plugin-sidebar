@@ -98,6 +98,10 @@ var TopicStatsPageView = Ember.View.extend({
         return this.get("currentControllerName").indexOf("topic") !== 0;
     }.property("currentControllerName"),
 
+    category: function(){
+        return Discourse.Category.findById(this.get("topic.category_id"));
+    }.property("topic.category_id"),
+
     topic: function(){
         var handler = this.get("handlerInfos").find(function(x){ return x.name === "topic"})
         if (!handler) return;
