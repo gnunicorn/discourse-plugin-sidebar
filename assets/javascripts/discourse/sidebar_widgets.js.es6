@@ -267,7 +267,9 @@ var UserNotificationsView = Ember.View.extend({
         this.set("loading", true);
         Discourse.ajax("/notifications").then(function(result) {
             this.set('loading', false);
-            this.set("notifications", result.rejectBy("read").slice(0, 7));
+            if (typeof(result) != 'undefined' && typeof(result.rejectBy) === 'function') {
+              this.set("notifications", result.rejectBy("read").slice(0, 7));
+            }
         }.bind(this));
     },
     shouldBeHidden: function(){
@@ -275,6 +277,7 @@ var UserNotificationsView = Ember.View.extend({
     }.property()
 })
 
+/*
 var CategoryInfoView = Ember.View.extend(CategoryViewMixing, {
     templateName: "sidebar/category_info",
     tagName: "div",
@@ -291,7 +294,26 @@ var CategoryInfoView = Ember.View.extend(CategoryViewMixing, {
         return !this.get("category.topic.excerpt")
     }.property("category")
 });
-
+*/
+var CategoryInfoView = Ember.View.extend({
+    templateName: "sidebar/category_info",
+    tagName: "div",
+    classNameBindings: ["shouldBeHidden:hidden", ":category-info"],
+    currentControllerName: "",
+    shouldBeHidden: function() {
+        if (this.get("currentControllerName") === "discovery.category" || this.get("currentControllerName") === "discovery.parentCategory") {
+          return false;
+        }
+        return true;
+    }.property("currentControllerName"),
+    category: function() {
+      var category_id = this.get("currentController.context.id"), category = Discourse.Category.findById(category_id);
+      if (!category_id || !category)
+        return;
+      else
+        return category;
+    }.property("handlerInfos")
+});
 
 export default {
     facebook_page: FacebookPageView,
