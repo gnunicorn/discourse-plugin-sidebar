@@ -273,8 +273,10 @@ var UserNotificationsView = Ember.View.extend({
         }.bind(this));
     },
     shouldBeHidden: function(){
-        return Discourse.User.current() === null;
-    }.property()
+      if (this.get('url') && Discourse.User.current()) {
+        return this.get("url") !== "/" && this.get("url").indexOf('/latest') !== 0 && this.get("url").indexOf('/tag') !== 0;
+      }
+    }.property("url")
 })
 
 /*
