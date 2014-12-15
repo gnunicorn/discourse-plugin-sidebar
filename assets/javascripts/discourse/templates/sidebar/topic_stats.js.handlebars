@@ -6,9 +6,9 @@
     <dt>{{i18n topic_stats.last_answer}}</dt>
     <dd>{{bound-date view.topic.last_posted_at}}</dd>
     <dt>{{i18n topic_stats.views}}</dt>
-    <dd>{{view.topic.views}}</dd>
+    <dd>{{digitGrouping view.topic.views}}</dd>
     <dt>{{i18n topic_stats.posts}}</dt>
-    <dd>{{view.topic.posts_count}}</dd>
+    <dd>{{digitGrouping view.topic.posts_count}}</dd>
   </dl>
   <div class="participants">
     <h4>{{i18n topic_stats.participants}}</h4>
