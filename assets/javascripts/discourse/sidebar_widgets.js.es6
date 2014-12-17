@@ -73,7 +73,7 @@ var ForumNewsWidget = Ember.View.extend({
     didInsertElement: function() {
         if (!Discourse.SiteSettings.sidebar_forum_news_category) {return};
         this.set("loading", true);
-        Discourse.ajax("/category/" + Discourse.SiteSettings.sidebar_forum_news_category + "/l/latest.json?max_posts=5").then(function(resp){
+        Discourse.ajax("/category/" + Discourse.SiteSettings.sidebar_forum_news_category + "/l/latest.json").then(function(resp){
           var topics = resp.topic_list.topics.map(function(topic){
             return Discourse.Topic.create(topic);
           }).slice(0, 5);
