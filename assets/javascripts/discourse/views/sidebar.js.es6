@@ -9,7 +9,7 @@
 
 var SIDEBAR_DEBUG = false;
 
-import Widgets from "discourse/plugins/sidebar/discourse/sidebar_widgets";
+import Widgets from "discourse/plugins/sidebar/discourse/helpers/sidebar_widgets";
 
 export default Discourse.ContainerView.extend({
     name: "global",
