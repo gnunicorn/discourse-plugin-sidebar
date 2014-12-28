@@ -10,9 +10,5 @@ register_asset "javascripts/reply-new-menu.js"
 register_asset 'stylesheets/sidebar_styles.scss'
 
 after_initialize do
-    if SiteSetting.sidebar_overwrite_template
-        register_asset "javascripts/application.js.handlebars"
-    end
-
 	::ApplicationController.send(:include, SidebarConcern)
 end

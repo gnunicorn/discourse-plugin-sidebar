@@ -2,11 +2,8 @@ sidebar:
   sidebar_free_text:
     default: "<b>Free Text</b>"
     client: true
-  sidebar_overwrite_template:
-    default: true
-    client: false
   sidebar_widgets:
-    default: stats|medium|facebook_page
+    default: facebook_page|subcategories|category_list|signup|user_stats|free_text|unanswered_topics|user_notifications|suggested_topics|category_featured_users|category_info|create_button|admin_menu|forum_news|topic_stats
     client: true
   sidebar_fb_page:
     default: ""
