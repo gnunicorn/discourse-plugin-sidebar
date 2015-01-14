@@ -13,10 +13,10 @@
 </div>
 {{/if}}
 
-{{#if view.category.description}}
+{{#if view.category.short_description}}
   <h3>{{i18n category.description}}</h3>
   <p>
-    {{restrictDescription view.category.description}}
+    {{restrictDescription view.category.short_description}}
     <a class='topic-link' {{bind-attr href='view.category.topic_url' }}>{{i18n read_more}}</a>
   </p>
 {{/if}}
