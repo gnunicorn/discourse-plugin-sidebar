@@ -1,4 +1,4 @@
-<h2>{{i18n user.notifications}}</h2>
+<h2>{{i18n 'user.notifications'}}</h2>
 <ul>
     {{#if view.loading}}
         <i class="fa fa-spin fa-spinner"></i>
@@ -8,7 +8,7 @@
           {{notification-item notification=this scope=scope}}
         {{/each}}
       {{else}}
-        <p>{{i18n no_unread_pm}}</p>
+        <p>{{i18n 'no_unread_pm'}}</p>
       {{/if}}
     {{/if}}
 </ul>

@@ -1,5 +1,5 @@
 {{!-- {{#if view.canCreateTopic}}
-  <button id="create-topic" class='btn btn-default' {{action createTopic}}><i class='fa fa-plus'></i>{{i18n topic.create}}</button>
+  <button id="create-topic" class='btn btn-default' {{action createTopic}}><i class='fa fa-plus'></i>{{i18n 'topic.create'}}</button>
 {{/if}}
 
 {{#if view.canChangeCategoryNotificationLevel}}
@@ -7,10 +7,10 @@
 {{/if}} --}}
 
 {{#if view.canCreateCategory}}
-  <button class='btn btn-default' {{action createCategory}}><i class='fa fa-plus'></i>{{i18n category.create}}</button>
+  <button class='btn btn-default' {{action createCategory}}><i class='fa fa-plus'></i>{{i18n 'category.create'}}</button>
 {{/if}}
 
 {{!-- {{#if view.canEditCategory}}
-  <button class='btn btn-default' {{action editCategory view.category}}><i class="fa fa-wrench"></i> {{i18n category.edit_long}}</button>
+  <button class='btn btn-default' {{action editCategory view.category}}>{{fa-icon "wrench"}} {{i18n 'category.edit_long'}}</button>
 {{/if}}
  --}}

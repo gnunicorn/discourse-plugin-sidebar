@@ -1,17 +1,17 @@
 {{#if view.topic}}
-  <h3>{{i18n topic_stats.title }}</h3>
+  <h3>{{i18n 'topic_stats.title' }}</h3>
   <dl>
-    <dt>{{i18n topic_stats.created}}</dt>
+    <dt>{{i18n 'topic_stats.created'}}</dt>
     <dd>{{bound-date view.topic.created_at}}</dd>
-    <dt>{{i18n topic_stats.last_answer}}</dt>
+    <dt>{{i18n 'topic_stats.last_answer'}}</dt>
     <dd>{{bound-date view.topic.last_posted_at}}</dd>
-    <dt>{{i18n topic_stats.views}}</dt>
+    <dt>{{i18n 'topic_stats.views'}}</dt>
     <dd>{{digitGrouping view.topic.views}}</dd>
-    <dt>{{i18n topic_stats.posts}}</dt>
+    <dt>{{i18n 'topic_stats.posts'}}</dt>
     <dd>{{digitGrouping view.topic.posts_count}}</dd>
   </dl>
   <div class="participants">
-    <h4>{{i18n topic_stats.participants}}</h4>
+    <h4>{{i18n 'topic_stats.participants'}}</h4>
     <div>
       {{#if view.participantsCollapsed}}
         {{#groupedEach participant in view.topic.details.fewParticipants}}
@@ -26,7 +26,7 @@
   </div>
   {{#if view.category.moderators}}
     <div class="moderators">
-      <span>{{i18n category.mod_description}}
+      <span>{{i18n 'category.mod_description'}}
         {{moderatorList view.category.moderators}}
       </span>
     </div>

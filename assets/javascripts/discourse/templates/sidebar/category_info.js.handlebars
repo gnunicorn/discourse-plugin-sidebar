@@ -1,22 +1,22 @@
 <dl>
-    <dt class="desc">{{i18n categories.topics}}</dt>
+    <dt class="desc">{{i18n 'categories.topics'}}</dt>
     <dd>{{digitGrouping view.category.topic_count}}</dd>
-    <dt class="desc">{{i18n categories.answers}}</dt>
+    <dt class="desc">{{i18n 'categories.answers'}}</dt>
     <dd>{{digitGrouping view.category.post_count}}</dd>
 </dl>
 
 {{#if view.category.moderators}}
 <div class="moderators">
-    <span>{{i18n category.mod_description}}
+    <span>{{i18n 'category.mod_description'}}
       {{moderatorList view.category.moderators}}
     </span>
 </div>
 {{/if}}
 
 {{#if view.category.short_description}}
-  <h3>{{i18n category.description}}</h3>
+  <h3>{{i18n 'category.description'}}</h3>
   <p>
     {{restrictDescription view.category.short_description}}
-    <a class='topic-link' {{bind-attr href='view.category.topic_url' }}>{{i18n read_more}}</a>
+    <a class='topic-link' {{bind-attr href='view.category.topic_url' }}>{{i18n 'read_more'}}</a>
   </p>
 {{/if}}
