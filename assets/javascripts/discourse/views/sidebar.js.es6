@@ -44,7 +44,7 @@ export default Discourse.ContainerView.extend({
     },
 
     urlChanged: function(router) {
-        if (this.state != "inDOM") return;
+        if (this._state != "inDOM") return;
 
         var url = router.get("url"),
             name = this.get("name"),
