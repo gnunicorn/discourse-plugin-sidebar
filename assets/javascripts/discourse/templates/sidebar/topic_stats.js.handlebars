@@ -14,13 +14,13 @@
     <h4>{{i18n 'topic_stats.participants'}}</h4>
     <div>
       {{#if view.participantsCollapsed}}
-        {{#groupedEach participant in view.topic.details.fewParticipants}}
+        {{#each participant in view.topic.details.fewParticipants}}
           {{topic-participant participant=participant}}
-        {{/groupedEach}}
+        {{/each}}
       {{else}}
-        {{#groupedEach participant in details.participants}}
+        {{#each participant in details.participants}}
           {{topic-participant participant=participant}}
-        {{/groupedEach}}
+        {{/each}}
       {{/if}}
     </div>
   </div>
