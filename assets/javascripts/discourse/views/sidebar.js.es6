@@ -1,3 +1,4 @@
+//= require ../helpers/sidebar_widgets
 /**
   This view acts as container for sidebar widgets
 
