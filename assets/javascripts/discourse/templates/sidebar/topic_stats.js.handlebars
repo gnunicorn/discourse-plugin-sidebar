@@ -7,8 +7,13 @@
     <dd>{{bound-date view.topic.last_posted_at}}</dd>
     <dt>{{i18n 'topic_stats.views'}}</dt>
     <dd>{{digitGrouping view.topic.views}}</dd>
-    <dt>{{i18n 'topic_stats.posts'}}</dt>
-    <dd>{{digitGrouping view.topic.posts_count}}</dd>
+    {{#if view.topic.total_reply_count}}
+      <dt>{{i18n 'categories.answers'}}</dt>
+      <dd>{{digitGrouping view.topic.total_reply_count}}</dd>
+    {{else}}
+      <dt>{{i18n 'topic_stats.posts'}}</dt>
+      <dd>{{digitGrouping view.topic.posts_count}}</dd>
+    {{/if}}
   </dl>
   <div class="participants">
     <h4>{{i18n 'topic_stats.participants'}}</h4>
