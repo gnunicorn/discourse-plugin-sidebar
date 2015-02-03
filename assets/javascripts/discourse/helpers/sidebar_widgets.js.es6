@@ -317,7 +317,10 @@ var CategoryInfoView = Ember.View.extend({
         return;
       else
         return category;
-    }.property("handlerInfos")
+    }.property("handlerInfos"),
+    total_reply_count: function() {
+      return this.get('category.post_count') - this.get('category.topic_count');
+    }.property("category.post_count", "category.topic_count")
 });
 
 export default {
