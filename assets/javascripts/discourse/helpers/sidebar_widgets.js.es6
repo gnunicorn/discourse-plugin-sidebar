@@ -88,7 +88,6 @@ var TopicStatsPageView = Ember.View.extend({
     templateName: "sidebar/topic_stats",
     tagName: "div",
     classNameBindings: ["shouldBeHidden:hidden"],
-    participantsCollapsed: true,
     classNames: ["topic_stats"],
     currentControllerName: "",
     handlerInfos: [],
@@ -107,8 +106,14 @@ var TopicStatsPageView = Ember.View.extend({
         var handler = this.get("handlerInfos").find(function(x){ return x.name === "topic"})
         if (!handler) return;
         return handler.context;
+    }.property("handlerInfos"),
 
-    }.property("handlerInfos")
+    participants: function() {
+      if (!this.get('topic.details.participants')) return null;
+      return this.get('topic.details.participants').filter(function(participant) {
+        return participant.get('id') > 0; // filter anonymous (system) participants
+      }).slice(0, 6);
+    }.property('topic.details.participants'),
 });
 
 
