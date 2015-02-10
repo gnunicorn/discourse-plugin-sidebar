@@ -94,7 +94,6 @@ var TopicStatsPageView = Ember.View.extend({
     // only show on list pages
     shouldBeHidden: function(){
         // we only show up on topic pages
-        console.log(this.get("currentControllerName"));
         return this.get("currentControllerName").indexOf("topic") !== 0;
     }.property("currentControllerName"),
 
