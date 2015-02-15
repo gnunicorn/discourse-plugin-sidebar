@@ -8,7 +8,10 @@
 {{#if view.category.moderators}}
 <div class="moderators">
     <span>{{i18n 'category.mod_description'}}
-      {{moderatorList view.category.moderators}}
+      {{#each moderator in view.category.moderators}}
+        {{#if _view.contentIndex}},{{/if}}
+        <a href="{{unbound moderator.path}}" data-user-card="{{unbound moderator.username}}" class="{{unbound extras}}">{{moderator.username}}</a>
+      {{/each}}
     </span>
 </div>
 {{/if}}
