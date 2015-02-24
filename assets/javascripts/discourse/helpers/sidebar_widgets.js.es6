@@ -231,6 +231,8 @@ var CreateButtonView = Ember.View.extend({
 });
 
 var AdminMenuView = CreateButtonView.extend({
+    classNameBindings: [':no-margin'],
+
     shouldBeHidden: function(){
         // we only show up for admins
         return Ember.get(Discourse.User.current(), "admin") !== true;
