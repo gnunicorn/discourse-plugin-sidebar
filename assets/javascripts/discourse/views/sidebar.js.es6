@@ -15,6 +15,7 @@ import Widgets from "discourse/plugins/sidebar/discourse/helpers/sidebar_widgets
 export default Discourse.ContainerView.extend({
     name: "global",
     updateOnRouting: true,
+    classNames: ['sidebar-view'],
     init: function(){
         this._super();
 
