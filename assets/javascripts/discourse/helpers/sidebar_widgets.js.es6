@@ -76,7 +76,7 @@ var ForumNewsWidget = Ember.View.extend({
         Discourse.ajax("/category/" + Discourse.SiteSettings.sidebar_forum_news_category + "/l/latest.json").then(function(resp){
           var topics = resp.topic_list.topics.map(function(topic){
             return Discourse.Topic.create(topic);
-          }).slice(0, 5);
+          }).slice(0, 3);
           this.setProperties({"topics": topics, loading: false});
         }.bind(this)).catch(function(x){
             console.error(x);
