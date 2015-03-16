@@ -73,7 +73,7 @@ var ForumNewsWidget = Ember.View.extend({
     didInsertElement: function() {
         if (!Discourse.SiteSettings.sidebar_forum_news_category) {return};
         this.set("loading", true);
-        Discourse.ajax("/category/" + Discourse.SiteSettings.sidebar_forum_news_category + "/l/latest.json").then(function(resp){
+        Discourse.ajax("/c/" + Discourse.SiteSettings.sidebar_forum_news_category + "/l/latest.json", {cache: true}).then(function(resp){
           var topics = resp.topic_list.topics.map(function(topic){
             return Discourse.Topic.create(topic);
           }).slice(0, 3);
@@ -270,14 +270,16 @@ var UserNotificationsView = Ember.View.extend({
     templateName: "sidebar/user_notifications",
     tagName: "div",
     classNameBindings: ["shouldBeHidden:hidden", ":notifications-widget"],
-    didInsertElement: function(){
+    didInsertElement: function() {
         this.set("loading", true);
-        Discourse.ajax("/notifications").then(function(result) {
-            this.set('loading', false);
-            if (typeof(result) != 'undefined' && typeof(result.rejectBy) === 'function') {
-              this.set("notifications", result.rejectBy("read").slice(0, 7));
-            }
-        }.bind(this));
+        if (Discourse.User.current()) {
+          Discourse.ajax("/notifications").then(function(result) {
+              this.set('loading', false);
+              if (typeof(result) != 'undefined' && typeof(result.rejectBy) === 'function') {
+                this.set("notifications", result.rejectBy("read").slice(0, 7));
+              }
+          }.bind(this));
+        }
     },
     shouldBeHidden: function(){
       if (this.get('url') && Discourse.User.current()) {
@@ -288,24 +290,6 @@ var UserNotificationsView = Ember.View.extend({
     }.property("url")
 })
 
-/*
-var CategoryInfoView = Ember.View.extend(CategoryViewMixing, {
-    templateName: "sidebar/category_info",
-    tagName: "div",
-    classNameBindings: ["shouldBeHidden:hidden", ":category-info"],
-    topic: function(){
-      var topic_data = this.get("category.topic");
-      if (!topic_data) return;
-      topic_data.details = {};
-      var t =  new Discourse.Topic();
-      t.updateFromJson(topic_data);
-      return t;
-    }.property("category.topic"),
-    shouldBeHidden: function(){
-        return !this.get("category.topic.excerpt")
-    }.property("category")
-});
-*/
 var CategoryInfoView = Ember.View.extend({
     templateName: "sidebar/category_info",
     tagName: "div",
