@@ -1,5 +1,5 @@
 Ember.Handlebars.helper('restrictDescription', function(description) {
-  if (description.length > 150) {
+  if (description && description.length > 150) {
     return new Handlebars.SafeString(description.substr(0, 150) + '&hellip;');
   } else {
     return new Handlebars.SafeString(description);
