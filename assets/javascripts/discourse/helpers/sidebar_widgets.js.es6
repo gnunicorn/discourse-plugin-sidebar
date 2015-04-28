@@ -93,8 +93,7 @@ var TopicStatsPageView = Ember.View.extend({
     handlerInfos: [],
     // only show on list pages
     shouldBeHidden: function(){
-        // we only show up on topic pages
-        return this.get("currentControllerName").indexOf("topic") !== 0;
+      return Discourse.Mobile.mobileView || this.get("currentControllerName").indexOf("topic") !== 0;
     }.property("currentControllerName"),
 
     category: function(){

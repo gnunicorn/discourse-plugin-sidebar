@@ -18,8 +18,8 @@
   <div class="participants">
     <h4>{{i18n 'topic_stats.participants'}}</h4>
     <div>
-      {{#each participant in view.participants}}
-        {{topic-participant participant=participant}}
+      {{#each view.participants}}
+        {{topic-participant participant=this}}
       {{/each}}
     </div>
   </div>
