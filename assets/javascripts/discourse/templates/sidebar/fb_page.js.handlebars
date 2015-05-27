@@ -1,7 +1,15 @@
 {{#if view.fb_page}}
-    <iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2F{{unbound view.fb_page}}&amp;width&amp;height=290&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=false&amp;show_border=true" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:290px;" allowTransparency="true"></iframe>
+
+  <div class="fb-page" data-href="https://www.facebook.com/werweisswas" data-height="290" data-hide-cover="true" data-show-facepile="true" data-show-posts="false">
+    <div class="fb-xfbml-parse-ignore">
+      <blockquote cite="https://www.facebook.com/werweisswas">
+        <a href="https://www.facebook.com/werweisswas">wer-weiss-was.de</a>
+      </blockquote>
+    </div>
+  </div>
+
 {{else}}
-    {{#if currentUser.admin }}
-        <strong>Please configure the <a href="/admin/site_settings/category/uncategorized">facebook page handle</a></strong>
-    {{/if}}
+  {{#if currentUser.admin }}
+    <strong>Please configure the <a href="/admin/site_settings/category/uncategorized">facebook page handle</a></strong>
+  {{/if}}
 {{/if}}
