@@ -67,8 +67,8 @@ var ForumNewsWidget = Ember.View.extend({
     handlerInfos: [],
 
     shouldBeHidden: function(){
-        return !Discourse.SiteSettings.sidebar_forum_news_category;
-    }.property("suggestedTopics"),
+        return !Discourse.SiteSettings.sidebar_forum_news_category || this.get("currentControllerName") === "full-page-search";
+    }.property("suggestedTopics", "currentControllerName"),
 
     didInsertElement: function() {
         if (!Discourse.SiteSettings.sidebar_forum_news_category) {return};
