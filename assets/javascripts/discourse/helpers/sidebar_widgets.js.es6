@@ -67,8 +67,8 @@ var ForumNewsWidget = Ember.View.extend({
     handlerInfos: [],
 
     shouldBeHidden: function(){
-        return !Discourse.SiteSettings.sidebar_forum_news_category;
-    }.property("suggestedTopics"),
+        return !Discourse.SiteSettings.sidebar_forum_news_category || this.get("currentControllerName") === "full-page-search";
+    }.property("suggestedTopics", "currentControllerName"),
 
     didInsertElement: function() {
         if (!Discourse.SiteSettings.sidebar_forum_news_category) {return};
@@ -312,6 +312,15 @@ var CategoryInfoView = Ember.View.extend({
     }.property("category.post_count", "category.topic_count")
 });
 
+var SearchHelp = Ember.View.extend({
+    templateName: "sidebar/search_help",
+    tagName: "div",
+    classNameBindings: ["shouldBeHidden:hidden", ":search-help"],
+    shouldBeHidden: function() {
+        return this.get("currentControllerName") !== "full-page-search";
+    }.property("currentControllerName")
+});
+
 export default {
     facebook_page: FacebookPageView,
     subcategories: SubcategoriesView,
@@ -327,5 +336,6 @@ export default {
     create_button: CreateButtonView,
     admin_menu: AdminMenuView,
     forum_news: ForumNewsWidget,
-    topic_stats: TopicStatsPageView
+    topic_stats: TopicStatsPageView,
+    search_help: SearchHelp
 };
