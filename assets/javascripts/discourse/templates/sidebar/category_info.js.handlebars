@@ -1,25 +1,27 @@
-<dl>
-    <dt class="desc">{{i18n 'categories.topics'}}</dt>
-    <dd>{{digitGrouping view.category.topic_count}}</dd>
-    <dt class="desc">{{i18n 'categories.answers'}}</dt>
-    <dd>{{digitGrouping view.total_reply_count}}</dd>
-</dl>
-
-{{#if view.category.moderators}}
-<div class="moderators">
-    <span>{{i18n 'category.mod_description'}}
-      {{#each moderator in view.category.moderators}}
-        {{#if _view.contentIndex}},{{/if}}
-        <a href="{{unbound moderator.path}}" data-user-card="{{unbound moderator.username}}" data-user-card-center class="{{unbound extras}}">{{moderator.username}}</a>
-      {{/each}}
-    </span>
-</div>
-{{/if}}
-
 {{#if view.category.short_description}}
-  <h3>{{i18n 'category.description'}}</h3>
+  <h2>{{i18n 'category.description'}}</h2>
   <p>
     {{restrictDescription view.category.short_description}}
     <a class='topic-link' {{bind-attr href='view.category.topic_url' }}>{{i18n 'read_more'}}</a>
   </p>
 {{/if}}
+
+<dl>
+  <dt class="desc">{{i18n 'categories.topics'}}</dt>
+  <dd>{{digitGrouping view.category.topic_count}}</dd>
+  <dt class="desc">{{i18n 'categories.answers'}}</dt>
+  <dd>{{digitGrouping view.total_reply_count}}</dd>
+</dl>
+
+{{#if view.category.moderators}}
+<div class="moderators">
+  <span>{{i18n 'category.mod_description'}}
+    {{#each moderator in view.category.moderators}}
+      {{#if _view.contentIndex}},{{/if}}
+      <a href="{{unbound moderator.path}}" data-user-card="{{unbound moderator.username}}" data-user-card-center class="{{unbound extras}}">{{moderator.username}}</a>
+    {{/each}}
+  </span>
+</div>
+{{/if}}
+
+<hr class="category-info" />
