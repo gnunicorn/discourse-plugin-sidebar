@@ -275,7 +275,7 @@ var UserNotificationsView = Ember.View.extend({
           Discourse.ajax("/notifications").then(function(result) {
               this.set('loading', false);
               if (typeof(result) != 'undefined' && typeof(result.rejectBy) === 'function') {
-                this.set("notifications", result.rejectBy("read").slice(0, 7));
+                this.set("notifications", result.rejectBy("read").slice(0, 5));
               }
           }.bind(this));
         }
