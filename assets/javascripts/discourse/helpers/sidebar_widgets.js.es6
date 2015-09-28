@@ -294,6 +294,7 @@ var CategoryInfoView = Ember.View.extend({
     tagName: "div",
     classNameBindings: ["shouldBeHidden:hidden", ":category-info"],
     currentControllerName: "",
+    defaultModerator: Discourse.computed.setting('default_moderator'),
     shouldBeHidden: function() {
         if (this.get("currentControllerName") === "discovery.category" || this.get("currentControllerName") === "discovery.parentCategory") {
           return false;

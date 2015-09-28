@@ -11,3 +11,6 @@ sidebar:
   sidebar_forum_news_category:
     default: ""
     client: true
+  default_moderator:
+    default: ""
+    client: true
