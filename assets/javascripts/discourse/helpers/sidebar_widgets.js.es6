@@ -282,12 +282,14 @@ var UserNotificationsView = Ember.View.extend({
     },
     shouldBeHidden: function(){
       if (this.get('url') && Discourse.User.current()) {
-        return this.get("url") !== "/" && this.get("url").indexOf('/latest') !== 0 && this.get("url").indexOf('/tag') !== 0;
+        return this.get("url") !== "/" && this.get("url").indexOf('/latest') !== 0
+          && this.get("url").indexOf('/top/') !== 0 && this.get("url").indexOf('/tag') !== 0
+          && this.get("url").indexOf('/unread') !== 0;
       } else {
         return true;
       }
     }.property("url")
-})
+});
 
 var CategoryInfoView = Ember.View.extend({
     templateName: "sidebar/category_info",
