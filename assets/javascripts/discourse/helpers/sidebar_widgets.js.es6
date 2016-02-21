@@ -207,8 +207,8 @@ var CreateButtonView = Ember.View.extend({
     }.property("isCategoryView"),
 
     canCreateCategory: function() {
-        return this.get("isCategoriesView") && Discourse.User.currentProp('staff');
-    }.property("isCategoriesView"),
+        return this.get("isCategoryView") && Discourse.User.currentProp('staff');
+    }.property("isCategoryView"),
 
     category: function(){
         return this.get("isCategoryView") && this.get("currentController.context");
@@ -219,19 +219,16 @@ var CreateButtonView = Ember.View.extend({
     }.property("currentControllerName"),
 
     isCategoryView: function() {
-        return this.get("currentControllerName").indexOf("category") !== -1;
+        return this.get("currentControllerName").toLowerCase().indexOf("category") !== -1;
     }.property("currentControllerName"),
 
     shouldBeHidden: function(){
         // we only show up on category pages
         return this.get("currentControllerName").indexOf("discovery") === -1;
     }.property("currentControllerName")
-
 });
 
 var AdminMenuView = CreateButtonView.extend({
-    classNameBindings: [':no-margin'],
-
     shouldBeHidden: function(){
         // we only show up for admins
         return Ember.get(Discourse.User.current(), "admin") !== true;
