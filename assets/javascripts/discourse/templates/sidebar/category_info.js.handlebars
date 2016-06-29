@@ -2,7 +2,9 @@
   <h2>{{i18n 'category.description'}}</h2>
   <p>
     {{restrictDescription view.category.short_description}}
-    <a class='topic-link' {{bind-attr href='view.category.topic_url' }}>{{i18n 'read_more'}}</a>
+    {{#if view.isNotTopLevelCategory}}
+      <a class='topic-link' {{bind-attr href='view.category.topic_url' }}>{{i18n 'read_more'}}</a>
+    {{/if}}
   </p>
 {{/if}}
 

@@ -300,12 +300,16 @@ var CategoryInfoView = Ember.View.extend({
         }
         return true;
     }.property("currentControllerName"),
+    isNotTopLevelCategory: function() {
+      return (this.get('category.parentCategory') !== undefined);
+    }.property("category.parentCategory"),
     category: function() {
       var category_id = this.get("currentController.context.id"), category = Discourse.Category.findById(category_id);
-      if (!category_id || !category)
+      if (!category_id || !category) {
         return;
-      else
+      } else {
         return category;
+      }
     }.property("handlerInfos"),
     total_reply_count: function() {
       return this.get('category.post_count') - this.get('category.topic_count');
